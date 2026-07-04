@@ -90,7 +90,8 @@
       </div>
       <div class="opts" id="qOpts"></div>
       <div class="feedback" id="qFeedback"></div>
-      <div style="text-align:center;margin-top:16px"><button class="btn ghost" id="quitBtn">End quiz</button></div>
+      <div style="text-align:center;margin-top:14px"><button class="btn accent" id="qNextBtn" style="--accent:var(--yamabuki);display:none">Next →</button></div>
+      <div style="text-align:center;margin-top:12px"><button class="btn ghost" id="quitBtn">End quiz</button></div>
     </div>
   </section>
 
@@ -244,7 +245,8 @@
       b.addEventListener('click',()=>choose(b,o.text)); host.appendChild(b);
     });
     document.getElementById('qFeedback').textContent=''; document.getElementById('qFeedback').className='feedback';
-    updateBar();
+    document.getElementById('qNextBtn').style.display='none';
+    updateBar(idx+1);
   }
   function choose(btn,text){
     const ok=text===cur.answer; total++; if(ok)right++; else misses.push(cur);
@@ -253,11 +255,14 @@
     const fb=document.getElementById('qFeedback');
     fb.innerHTML=(ok?'正解！ ':'')+cur.explain; fb.className='feedback '+(ok?'ok':'bad');
     if(cur.speak){ const sp=document.getElementById('qSpeak'); sp.style.display=''; sp.onclick=()=>JPAudio.button(cur.speak,sp); JPAudio.speak(cur.speak); }
-    idx++; updateBar();
-    setTimeout(nextQ, ok?900:1900);
+    idx++; updateBar(idx);
+    const nb=document.getElementById('qNextBtn');
+    nb.textContent = (!endless && idx>=length) ? 'See results →' : 'Next →';
+    nb.style.display=''; nb.focus();
   }
-  function updateBar(){
-    document.getElementById('qScore').textContent=right+' / '+total;
+  function updateBar(num){
+    const cap = endless ? '∞' : length;
+    document.getElementById('qScore').textContent=num+' / '+cap+' · '+right+' ✓';
     const pct = endless ? (total?right/total*100:0) : (idx/length*100);
     document.getElementById('qProg').style.width=pct+'%';
   }
@@ -277,6 +282,7 @@
       });
     } else host.innerHTML='<p class="note" style="--accent:var(--ok);color:var(--ok)">Perfect round — nothing to review. 🎌</p>';
   }
+  document.getElementById('qNextBtn').addEventListener('click',nextQ);
   document.getElementById('startBtn').addEventListener('click',start);
   document.getElementById('quitBtn').addEventListener('click',finish);
   document.getElementById('againBtn').addEventListener('click',start);

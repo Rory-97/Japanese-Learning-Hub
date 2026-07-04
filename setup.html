@@ -79,6 +79,35 @@
       </div>
     </section>
 
+    <section class="group reveal" style="--accent:var(--murasaki)">
+      <div class="ghead"><span class="tag" style="background:var(--murasaki)">札</span><h2>Recommended decks</h2><span class="jp-sub">the fastest route to “mining is feasible”</span></div>
+      <p class="gintro">Mining works best once you can read kana instantly and recognize ~1,000–1,500 common words — below that, every sentence has too many unknowns to pick just one. The community-standard path there: <b>kana first</b>, then <b>one starter vocab deck to completion</b>, learning kanji through the words rather than in isolation. Download a deck (.apkg) and load it with <b>File → Import</b> in Anki; everything imported shows up in this hub on the next sync.</p>
+      <div class="navgrid">
+        <div class="card" style="--accent:var(--take)">
+          <div class="nc-kicker" style="color:var(--take)">Step 0 · Kana</div>
+          <h3 class="serif" style="margin:4px 0 6px;font-size:1.2rem"><a href="https://ankiweb.net/shared/info/1133476087" target="_blank" rel="noopener">Japanese Kana (Mnemonics, 2× Audio, Stroke)</a></h3>
+          <p style="margin:0;font-size:.9rem;color:var(--ink-soft)">All hiragana + katakana with Tofugu-style picture mnemonics, male and female audio, and stroke diagrams. Do hiragana before katakana. A week or two of this (plus the <a href="kana.html">kana drills</a> here) and reading kana stops being the bottleneck. Tofugu also publishes <a href="https://ankiweb.net/shared/info/1027153995" target="_blank" rel="noopener">a standalone katakana deck</a>.</p>
+        </div>
+        <div class="card" style="--accent:var(--shu)">
+          <div class="nc-kicker" style="color:var(--shu)">Step 1 · Vocabulary — the main event</div>
+          <h3 class="serif" style="margin:4px 0 6px;font-size:1.2rem"><a href="https://ankiweb.net/shared/info/1196762551" target="_blank" rel="noopener">Kaishi 1.5k</a></h3>
+          <p style="margin:0;font-size:.9rem;color:var(--ink-soft)">The current community-standard starter deck: 1,500 high-frequency words with native audio, example sentences, furigana, and pitch-accent graphs. It replaced Core 2000 as the default recommendation because the sentences and audio are simply better. Finishing this deck ≈ the point where i+1 mining becomes comfortable. Modular and open source on <a href="https://github.com/donkuri/Kaishi" target="_blank" rel="noopener">GitHub</a>.</p>
+        </div>
+        <div class="card" style="--accent:var(--aiiro)">
+          <div class="nc-kicker" style="color:var(--aiiro)">Optional · Kanji help</div>
+          <h3 class="serif" style="margin:4px 0 6px;font-size:1.2rem"><a href="https://ankiweb.net/shared/info/1843881818" target="_blank" rel="noopener">RRTK 450</a></h3>
+          <p style="margin:0;font-size:.9rem;color:var(--ink-soft)">The 450 most common kanji as recognition cards with keywords, images, and sample vocab. Modern consensus is that kanji are best learned <em>through words</em> (Kaishi already does this), so treat this as a booster only if characters still feel like indistinguishable noise a few hundred words in — it makes new vocab stick without the months a full RTK run costs. Pair it with the <a href="radicals.html">radicals page</a> here for the building blocks.</p>
+        </div>
+        <div class="card" style="--accent:var(--yamabuki)">
+          <div class="nc-kicker" style="color:var(--yamabuki)">Alternatives</div>
+          <h3 class="serif" style="margin:4px 0 6px;font-size:1.2rem">Tango N5/N4 · Core 2k/6k</h3>
+          <p style="margin:0;font-size:.9rem;color:var(--ink-soft)"><a href="https://ankiweb.net/shared/decks?search=tango%20n5" target="_blank" rel="noopener">Tango N5 → N4</a> teaches via full JLPT-aligned sentences (companion decks to a paid book series) — good if you prefer sentence cards. <a href="https://ankiweb.net/shared/decks?search=core%202000" target="_blank" rel="noopener">Core 2000/6000</a> is the older standard Kaishi replaced — still solid, just dated audio and sentences. Pick <b>one</b> starter deck and finish it; running two vocab decks in parallel doubles reviews, not progress.</p>
+        </div>
+      </div>
+      <p class="note" style="--accent:var(--murasaki)">After the starter deck, stop adding pre-made decks — from there, <b>mining your own cards</b> (Video / Manga tabs above) beats any shared deck, because every card comes from something you actually watched or read.</p>
+      <p style="margin-top:10px;font-size:.8rem;color:var(--ink-soft)">Sources: these picks reflect the consensus across <a href="https://migaku.com/blog/japanese/best-japanese-anki-decks" target="_blank" rel="noopener">Migaku’s 2026 deck roundup</a>, the <a href="https://donkuri.github.io/learn-japanese/" target="_blank" rel="noopener">Donkuri learning guide</a> (by Kaishi’s authors), <a href="https://animecards.site/learningjapanese/" target="_blank" rel="noopener">Animecards’ guide</a>, <a href="https://tatsumoto.neocities.org/blog/kana-anki-decks" target="_blank" rel="noopener">Tatsumoto on kana decks</a>, <a href="https://www.learnkanji.guide/" target="_blank" rel="noopener">learnkanji.guide</a>, and <a href="https://cademcniven.com/posts/20210226/" target="_blank" rel="noopener">Cade McNiven’s kanji-through-vocab writeups</a>.</p>
+    </section>
+
     <section class="group reveal" style="--accent:var(--asagi)">
       <div class="ghead"><span class="tag" style="background:var(--asagi)">繋</span><h2>Connect this hub to Anki</h2><span class="jp-sub">the exact sequence that works</span></div>
       <div>
@@ -89,7 +118,8 @@
   <span class="k">"webBindPort"</span>: <span class="s">"8765"</span>,
   <span class="k">"webCorsOriginList"</span>: [<span class="s">"http://localhost"</span>, <span class="s">"null"</span>]
 }</pre>
-          <p><b>Restart Anki</b> (the config only reloads on restart), hard-reload the hub (Ctrl/Cmd+Shift+R), and sync again. This is the fix that resolves nearly every “can’t find it” case.</p></div></div>
+          <p><b>Restart Anki</b> (the config only reloads on restart), hard-reload the hub (Ctrl/Cmd+Shift+R), and sync again. This is the fix that resolves nearly every “can’t find it” case.</p>
+          <p>Using a <b>hosted copy</b> of the hub instead of a local file? Add that site’s origin to the same list — e.g. for the GitHub Pages copy: <code class="inl">"https://rory-97.github.io"</code>. Origins are scheme + domain only, no path.</p></div></div>
         <div class="step" style="--accent:var(--asagi)"><div class="num">3</div><div class="st-body"><h3>Sanity check</h3><p>With Anki open, visit <a href="http://127.0.0.1:8765" target="_blank" rel="noopener">http://127.0.0.1:8765</a> in the browser — it should say <em>“AnkiConnect v.6”</em>. If it doesn’t, AnkiConnect isn’t running and no page can reach it.</p></div></div>
         <div class="step" style="--accent:var(--asagi)"><div class="num">4</div><div class="st-body"><h3>Optional: serve over localhost</h3><p>Running the hub from <code class="inl">http://localhost</code> instead of a double-clicked file sidesteps every <code class="inl">file://</code> quirk: from the hub folder run <code class="inl">python -m http.server 8000</code> (or <code class="inl">npx serve</code>), open <code class="inl">http://localhost:8000</code>, and add <code class="inl">"http://localhost:8000"</code> to <code class="inl">webCorsOriginList</code>.</p></div></div>
       </div>

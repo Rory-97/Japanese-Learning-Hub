@@ -2,6 +2,10 @@
 
 A static, no-build Japanese learning hub that personalizes itself around an Anki collection. Open `index.html` in a browser — no server or install required (a local server is optional, see the Setup page).
 
+**Live site:** [rory-97.github.io/Japanese-Learning-Hub](https://rory-97.github.io/Japanese-Learning-Hub/) (hosted via GitHub Pages from `main`)
+
+> To use live Anki sync from the hosted site, add `"https://rory-97.github.io"` to `webCorsOriginList` in the AnkiConnect config (Tools → Add-ons → AnkiConnect → Config), then restart Anki.
+
 ## Pages
 
 | Page | What it does |

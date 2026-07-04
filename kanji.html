@@ -20,6 +20,7 @@
   .kj-ex .r{color:var(--ink-soft);}
   .kj-ex .m{color:var(--ink-soft);font-size:.82rem;margin-left:auto;text-align:right;}
   .kj-sent{margin-top:7px;padding-top:7px;border-top:1px dashed var(--line);color:var(--ink-soft);font-size:.8rem;line-height:1.5;}
+  .kj-sent .js{font-size:.92rem;color:var(--ink);margin-bottom:2px;}
   .kj-sent mark.hl{background:color-mix(in srgb,var(--yamabuki) 28%,transparent);color:var(--ink);font-weight:700;border-radius:4px;padding:0 2px;}
   .catlabel{font-family:"Zen Old Mincho",serif;font-weight:700;font-size:1.15rem;margin:26px 0 12px;color:var(--ink);display:flex;align-items:center;gap:10px;}
   .catlabel::after{content:"";flex:1;height:1px;background:var(--line);}
@@ -106,7 +107,7 @@
     <div class="quiz-card" style="--accent:var(--yamabuki)">
       <div class="quiz-bar">
         <div class="progress"><i id="qProg" style="width:0%"></i></div>
-        <div class="score" id="qScore">0 / 0</div>
+        <div class="score" id="qScore">0 / ∞ · 0 ✓</div>
       </div>
       <div class="quiz-prompt">
         <div class="label">How is this read?</div>
@@ -115,7 +116,8 @@
       </div>
       <div class="opts" id="qOpts"></div>
       <div class="feedback" id="qFeedback"></div>
-      <div style="text-align:center;margin-top:18px"><button class="btn ghost" id="qReset">Reset score</button></div>
+      <div style="text-align:center;margin-top:14px"><button class="btn accent" id="qNextBtn" style="--accent:var(--yamabuki);display:none">Next →</button></div>
+      <div style="text-align:center;margin-top:12px"><button class="btn ghost" id="qReset">Reset score</button></div>
     </div>
   </section>
 
@@ -150,7 +152,7 @@
         mean: core?core.mean:((exw&&exw.m)?exw.m:'—'),
         on: core?core.on:[], kun: core?core.kun:[],
         cat: core?core.cat:'',
-        ex: exw?{w:exw.w,r:exw.r||'',m:exw.m||'',st:exw.st||''}:(core?core.ex:{w:ch,r:'',m:''})
+        ex: exw?{w:exw.w,r:exw.r||'',m:exw.m||'',st:exw.st||'',s:exw.s||''}:(core?core.ex:{w:ch,r:'',m:''})
       };
     });
   }
@@ -216,7 +218,11 @@
       '<div><div class="kj-mean">'+x.mean+'</div><div class="kj-read">'+on+(on&&kun?'<br>':'')+kun+'</div></div></div>'+
       '<div class="kj-ex"><span class="w jp">'+x.ex.w+'</span><span class="r">'+x.ex.r+'</span>'+
       '<span class="m">'+x.ex.m+'</span></div>'+
-      (x.ex.st ? '<div class="kj-sent">'+AnkiData.markSentence(x.ex.st, x.ex.m)+'</div>' : '');
+      (x.ex.s || x.ex.st ?
+        '<div class="kj-sent">'+
+        (x.ex.s ? '<div class="jp js">'+AnkiData.markWord(x.ex.s, x.ex.w)+'</div>' : '')+
+        (x.ex.st ? '<div>'+AnkiData.markSentence(x.ex.st, x.ex.m)+'</div>' : '')+
+        '</div>' : '');
     const ex=el.querySelector('.kj-ex');
     const btn=JPAudio.makeBtn(x.ex.r||x.ex.w,'sm'); btn.style.marginLeft='2px';
     ex.insertBefore(btn, ex.children[2]);
@@ -259,6 +265,7 @@
       b.addEventListener('click',()=>qChoose(b,r)); host.appendChild(b);
     });
     document.getElementById('qFeedback').textContent=''; document.getElementById('qFeedback').className='feedback';
+    document.getElementById('qNextBtn').style.display='none';
   }
   function qChoose(btn,r){
     const ok=r===qCur.ex.r; qTotal++; if(ok){qRight++; weight[qCur.k]=Math.max(1,(weight[qCur.k]||1)-1);} else {weight[qCur.k]=(weight[qCur.k]||1)+2;}
@@ -269,12 +276,13 @@
                     : '<span class="jp">'+qCur.ex.w+'</span> = '+qCur.ex.r+' ('+qCur.ex.m+')';
     fb.className='feedback '+(ok?'ok':'bad');
     JPAudio.speak(qCur.ex.r);
-    document.getElementById('qScore').textContent=qRight+' / '+qTotal;
+    document.getElementById('qScore').textContent=qTotal+' / ∞ · '+qRight+' ✓';
     document.getElementById('qProg').style.width=(qTotal?Math.round(qRight/qTotal*100):0)+'%';
-    setTimeout(qNext, ok?800:1700);
+    const nb=document.getElementById('qNextBtn'); nb.style.display=''; nb.focus();
   }
+  document.getElementById('qNextBtn').addEventListener('click',qNext);
   document.getElementById('quizKnown').addEventListener('change',qNext);
-  document.getElementById('qReset').addEventListener('click',()=>{qRight=0;qTotal=0;document.getElementById('qScore').textContent='0 / 0';document.getElementById('qProg').style.width='0%';qNext();});
+  document.getElementById('qReset').addEventListener('click',()=>{qRight=0;qTotal=0;document.getElementById('qScore').textContent='0 / ∞ · 0 ✓';document.getElementById('qProg').style.width='0%';qNext();});
 
   /* show Anki filters when connected */
   function refreshMig(){

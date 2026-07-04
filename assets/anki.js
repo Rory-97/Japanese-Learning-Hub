@@ -51,12 +51,21 @@
     if (g.length > 80) g = g.slice(0, 78) + '…';
     let st = sents[0] || '';
     if (st.length > 140) st = st.slice(0, 138) + '…';
+    // Japanese example sentence = a Japanese field that contains the word.
+    // Prefer fields with sentence punctuation, then fields with kanji (this
+    // skips furigana/reading versions of the same sentence).
+    let cand = jp.filter(v => v !== w && v.indexOf(w) >= 0 && v.length > w.length + 1);
+    const punct = cand.filter(v => /[。！？!?]/.test(v));
+    if (punct.length) cand = punct;
+    else { const kk = cand.filter(v => KANJI_RE.test(v)); if (kk.length) cand = kk; }
+    let s = cand.sort((a, b) => a.length - b.length)[0] || '';
+    if (s.length > 120) s = s.slice(0, 118) + '…';
     // meaning = the word gloss when the note has one; sentence only as fallback
     let m = g || st;
-    if (!m) return { w, r, m: '' };
     if (m.length > 90) m = m.slice(0, 88) + '…';
     const e = { w, r, m };
     if (g && st) e.st = st; // keep the sentence too, so pages can show it with the word highlighted
+    if (s) e.s = s;
     return e;
   }
 
@@ -77,6 +86,14 @@
       const hit = keys.some(k => lw === k || lw.startsWith(k) || (k.startsWith(lw) && lw.length >= 4));
       return hit ? '<mark class="hl">' + esc + '</mark>' : esc;
     }).join('');
+  }
+
+  // Returns HTML: the (Japanese) sentence with every occurrence of the target word marked.
+  function markWord(sentence, word) {
+    const esc = escapeHTML(sentence);
+    if (!word) return esc;
+    const ew = escapeHTML(word);
+    return esc.split(ew).join('<mark class="hl">' + ew + '</mark>');
   }
 
   function buildProfile(entries, source) {
@@ -178,7 +195,7 @@
       try {
         const o = JSON.parse(t);
         const words = Array.isArray(o) ? o : (o.words || []);
-        const entries = words.map(w => { const e = { w: w.w || w.word || '', r: w.r || w.reading || '', m: w.m || w.meaning || '', status: w.status || 'learning' }; if (w.st) e.st = w.st; return e; }).filter(e => e.w);
+        const entries = words.map(w => { const e = { w: w.w || w.word || '', r: w.r || w.reading || '', m: w.m || w.meaning || '', status: w.status || 'learning' }; if (w.st) e.st = w.st; if (w.s) e.s = w.s; return e; }).filter(e => e.w);
         if (entries.length) return { ok: true, data: persist(buildProfile(entries, 'imported')) };
       } catch (e) { /* fall through */ }
     }
@@ -274,6 +291,6 @@
     syncLive, importFile, importText, exportProfile, available,
     get, connected, source, knowsKanji, maturedKanji, knowsWord,
     words, learningWords, knownWords, clear, onChange, initPill,
-    markSentence
+    markSentence, markWord
   };
 })(window);
