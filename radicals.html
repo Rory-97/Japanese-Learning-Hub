@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Radicals — 部首 — ローリーの日本語ハブ</title>
+<link rel="stylesheet" href="assets/theme.css">
+<style>
+  .rad-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;}
+  .rad{background:var(--paper-2);border:1px solid var(--line);border-radius:12px;padding:11px 12px 10px;box-shadow:var(--shadow);border-left:4px solid var(--accent);cursor:pointer;transition:transform .1s ease,box-shadow .1s ease;position:relative;}
+  .rad:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg);}
+  .rad .num{position:absolute;top:7px;right:9px;font-size:.62rem;font-weight:700;color:var(--ink-soft);opacity:.6;}
+  .rad .top{display:flex;align-items:baseline;gap:8px;}
+  .rad .glyph{font-family:"Zen Old Mincho",serif;font-weight:700;font-size:2.1rem;line-height:1;color:var(--accent);}
+  .rad .var{font-family:"Noto Sans JP",sans-serif;font-size:.95rem;color:var(--ink-soft);}
+  .rad .name{font-family:"Noto Sans JP",sans-serif;font-size:.82rem;font-weight:600;margin-top:6px;}
+  .rad .mean{font-size:.8rem;color:var(--ink-soft);margin-top:1px;}
+  .rad .spk{position:absolute;bottom:8px;right:8px;width:22px;height:22px;font-size:.66rem;opacity:0;transition:opacity .12s;}
+  .rad .deck{position:absolute;top:24px;right:9px;font-size:.6rem;font-weight:800;padding:1px 6px;border-radius:999px;color:var(--ok);background:color-mix(in srgb,var(--ok) 14%,transparent);}
+  .rad .deck.learn{color:var(--yamabuki);background:color-mix(in srgb,var(--yamabuki) 18%,transparent);}
+  #deckFilterWrap{display:none;flex:0 0 auto;align-items:center;gap:6px;font-size:.8rem;font-weight:700;color:var(--ink-soft);cursor:pointer;user-select:none;white-space:nowrap;}
+  .rad:hover .spk{opacity:1;}
+  .strokehead{font-family:"Zen Old Mincho",serif;font-weight:700;font-size:1.15rem;margin:26px 0 12px;display:flex;align-items:center;gap:10px;scroll-margin-top:150px;}
+  .strokehead::after{content:"";flex:1;height:1px;background:var(--line);}
+  .strokehead .cnt{font-family:"Hanken Grotesk",sans-serif;font-size:.78rem;font-weight:600;color:var(--ink-soft);}
+  .toolbar{position:sticky;top:43px;z-index:40;background:rgba(244,241,234,.92);backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid var(--line);padding:10px 0;}
+  .toolbar .inner{max-width:920px;margin:0 auto;padding:0 20px;display:flex;gap:10px;align-items:center;flex-wrap:wrap;}
+  #search{flex:1 1 200px;font-family:inherit;font-size:.92rem;padding:9px 14px;border-radius:999px;border:1px solid var(--line);background:var(--paper-2);color:var(--ink);}
+  #search:focus{outline:2px solid var(--accent);border-color:transparent;}
+  .jumps{display:flex;gap:5px;overflow-x:auto;scrollbar-width:none;}
+  .jumps::-webkit-scrollbar{display:none}
+  .jumps a{flex:0 0 auto;text-decoration:none;font-size:.78rem;font-weight:700;color:var(--ink-soft);padding:5px 9px;border-radius:8px;border:1px solid var(--line);background:var(--paper-2);}
+  .jumps a:hover{color:#fff;background:var(--ink);}
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="topnav-inner">
+    <a class="brand" href="index.html" style="gap:0"><span style="color:var(--shu)">ローリー</span><span style="color:var(--ink-soft)">の</span><span style="color:var(--aiiro)">日本語</span><span style="color:var(--take)">ハブ</span></a>
+    <a class="tab" href="index.html">Home</a>
+    <a class="tab" href="kana.html">Kana</a>
+    <a class="tab active" href="kanji.html">Kanji</a>
+    <a class="tab" href="particles.html">Particles</a>
+    <a class="tab" href="cheatsheets.html">Cheats</a>
+    <a class="tab" href="speaking.html">Speaking</a>
+    <a class="tab" href="quizzes.html">Quizzes</a>
+    <a class="tab" href="setup.html">Setup</a>
+    <span class="spacer"></span>
+    <span id="migContainer"></span>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="kana-ghost" aria-hidden="true">部</div>
+  <div class="wrap">
+    <p class="eyebrow">The building blocks</p>
+    <h1>The components<br>every kanji is built from.</h1>
+    <p class="jp-title">部首 ・ ぶしゅ</p>
+    <p class="lede"><strong>Radicals (部首) are the recurring graphical components of kanji, and the traditional Kangxi set numbers exactly 214.</strong> Dictionaries index kanji by them, and they work like roots in a word: 茶 (tea) is <span class="say" data-jp="くさかんむり">grass</span> + <span class="say" data-jp="き">tree</span> + a person sheltering. Recognising the common ones turns complex kanji from random strokes into readable structure. Search by meaning, browse by stroke count, and tap any to hear its Japanese name.</p>
+  </div>
+</header>
+
+<nav class="toolbar">
+  <div class="inner">
+    <input id="search" type="search" placeholder="Search 214 radicals — meaning, name, or character…" autocomplete="off">
+    <label id="deckFilterWrap"><input type="checkbox" id="deckFilter">in my Anki deck</label>
+    <div class="jumps" id="jumps"></div>
+  </div>
+</nav>
+
+<main class="wrap">
+
+  <div class="subtabs"><a href="kanji.html">漢字 Kanji</a><a class="active" href="radicals.html">部首 Radicals</a></div>
+
+  <section class="group" style="--accent:var(--aiiro);padding-top:10px">
+    <p class="note" style="--accent:var(--aiiro)">📐 <b>How to read these:</b> the big glyph is the radical; a smaller grey glyph after it (e.g. <span class="jp">水 氵</span>) is the <b>combining form</b> you'll actually see inside kanji. The Japanese name (its <span class="jp">部首</span> name) is how it's referred to — handy when looking kanji up or talking about components.</p>
+  </section>
+
+  <div id="radHost"></div>
+  <p id="noResults" class="gintro" style="display:none;text-align:center;padding:30px 0">No radicals match that search. <a href="#" onclick="document.getElementById('search').value='';render();return false;">Clear</a></p>
+
+</main>
+
+<footer class="wrap">
+  <p><span class="jp">部首がわかれば、漢字が見える。</span> &nbsp;You don't need to memorise all 214 cold — recognising the common ones (water, hand, tree, person, speech, heart) unlocks the structure of most kanji. Pair this with the <a href="kanji.html">kanji page</a>.</p>
+</footer>
+
+<script src="assets/audio.js"></script>
+<script src="assets/anki.js"></script>
+<script src="assets/radicals-data.js"></script>
+<script>
+  AnkiData.initPill(document.getElementById('migContainer'));
+
+  const STROKE_COLORS=['var(--aiiro)','var(--asagi)','var(--take)','var(--yamabuki)','var(--shu)','var(--murasaki)','var(--renga)'];
+  const strokes=[...new Set(RADICALS.map(r=>r.s))].sort((a,b)=>a-b);
+  const host=document.getElementById('radHost');
+
+  // jump chips
+  const jumps=document.getElementById('jumps');
+  strokes.forEach(s=>{ const a=document.createElement('a'); a.href='#s'+s; a.textContent=s+'画'; jumps.appendChild(a); });
+
+  /* Anki: a radical counts as "in the deck" when its glyph (or combining
+     variant) is used as a kanji inside any word on the connected cards. */
+  function deckStatus(rd){
+    const d=AnkiData.get(); if(!d) return null;
+    const chars=[rd.r].concat(rd.v?[...rd.v]:[]);
+    if(chars.some(ch=>d.kanjiKnown.has(ch))) return 'known';
+    if(chars.some(ch=>d.kanji.has(ch))) return 'learning';
+    return null;
+  }
+
+  function card(rd, color){
+    const el=document.createElement('div'); el.className='rad'; el.style.setProperty('--accent',color);
+    const st=deckStatus(rd);
+    el.innerHTML='<span class="num">#'+rd.n+'</span>'+
+      (st?'<span class="deck'+(st==='learning'?' learn':'')+'">'+(st==='known'?'✓':'◐')+'</span>':'')+
+      '<div class="top"><span class="glyph">'+rd.r+'</span>'+(rd.v?'<span class="var">'+rd.v+'</span>':'')+'</div>'+
+      '<div class="name">'+rd.name+'</div><div class="mean">'+rd.mean+'</div>';
+    const spk=JPAudio.makeBtn(rd.name.split('／')[0], 'spk'); spk.classList.add('sm');
+    el.appendChild(spk);
+    el.addEventListener('click',e=>{ if(e.target===spk||spk.contains(e.target))return; JPAudio.button(rd.name.split('／')[0], el); });
+    return el;
+  }
+
+  function render(){
+    const q=document.getElementById('search').value.trim().toLowerCase();
+    host.innerHTML=''; let total=0;
+    strokes.forEach((s,i)=>{
+      let items=RADICALS.filter(r=>r.s===s);
+      if(q) items=items.filter(r=> r.mean.toLowerCase().includes(q) || r.name.includes(q) || r.r===q || (r.v&&r.v===q) || (''+r.n)===q );
+      if(document.getElementById('deckFilter').checked && AnkiData.connected()) items=items.filter(r=>deckStatus(r));
+      if(!items.length) return;
+      const color=STROKE_COLORS[i%STROKE_COLORS.length];
+      const h=document.createElement('div'); h.className='strokehead'; h.id='s'+s;
+      h.innerHTML=s+' stroke'+(s>1?'s':'')+' <span class="cnt">'+items.length+'</span>';
+      host.appendChild(h);
+      const g=document.createElement('div'); g.className='rad-grid';
+      items.forEach(r=>{ g.appendChild(card(r,color)); total++; });
+      host.appendChild(g);
+    });
+    document.getElementById('noResults').style.display = total?'none':'';
+    document.getElementById('jumps').style.display = q?'none':'flex';
+  }
+  document.getElementById('search').addEventListener('input',render);
+  document.getElementById('deckFilter').addEventListener('change',render);
+  function refreshDeckUI(){
+    const on=AnkiData.connected();
+    document.getElementById('deckFilterWrap').style.display=on?'flex':'none';
+    if(!on) document.getElementById('deckFilter').checked=false;
+    render();
+  }
+  AnkiData.onChange(refreshDeckUI);
+  refreshDeckUI();
+</script>
+</body>
+</html>

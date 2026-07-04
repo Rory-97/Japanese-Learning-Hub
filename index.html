@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ローリーの日本語ハブ — Rory's Japanese Hub</title>
+<link rel="stylesheet" href="assets/theme.css">
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="topnav-inner">
+    <a class="brand" href="index.html" style="gap:0"><span style="color:var(--shu)">ローリー</span><span style="color:var(--ink-soft)">の</span><span style="color:var(--aiiro)">日本語</span><span style="color:var(--take)">ハブ</span></a>
+    <a class="tab active" href="index.html">Home</a>
+    <a class="tab" href="kana.html">Kana</a>    <a class="tab" href="kanji.html">Kanji</a>
+    <a class="tab" href="particles.html">Particles</a>
+    <a class="tab" href="cheatsheets.html">Cheats</a>
+    <a class="tab" href="speaking.html">Speaking</a>
+    <a class="tab" href="quizzes.html">Quizzes</a>
+    <a class="tab" href="setup.html">Setup</a>
+    <span class="spacer"></span>
+    <span id="migContainer"></span>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="kana-ghost" aria-hidden="true">語</div>
+  <div class="wrap">
+    <p class="eyebrow">Rory's Japanese Hub</p>
+    <h1><span style="color:var(--shu)">ローリー</span><span style="color:var(--ink-soft)">の</span><br><span style="color:var(--aiiro)">日本語</span><span style="color:var(--take)">ハブ</span></h1>
+    <p class="jp-title">Reference · Drills · Quizzes</p>
+    <p class="lede"><strong>A self-contained site for studying Japanese: kana and kanji charts, radical and particle references, conjugation cheat sheets, pronunciation guides, and self-generating quizzes.</strong> Every kana, kanji, and phrase can be heard aloud — tap 🔊 anywhere. Connect an Anki collection and the kanji page, quizzes, and references adapt to the cards in that deck.</p>
+  </div>
+</header>
+
+<main class="wrap-wide">
+
+  <!-- Anki banner -->
+  <section class="group reveal" style="--accent:var(--asagi);padding-top:30px">
+    <div class="banner" style="border-left:4px solid var(--asagi)">
+      <div class="grow">
+        <h3 id="migTitle">Connect Anki to personalize everything</h3>
+        <p id="migDesc">Open Anki (with the AnkiConnect add-on) and hit <b>Sync from Anki</b> — the hub reads the deck live. No Anki open? <b>Import file</b> accepts a plain Anki export. Full instructions on the <a href="setup.html">Setup page</a>.</p>
+      </div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <button class="btn accent" id="ankiSync" style="--accent:var(--asagi)">Sync from Anki</button>
+        <button class="btn ghost" id="ankiImport">Import file</button>
+        <button class="btn ghost" id="migClear" style="display:none">Disconnect</button>
+      </div>
+      <input type="file" id="migFile" accept=".json,.csv,.txt" style="display:none">
+    </div>
+    <div class="navgrid" id="statsRow" style="margin-top:14px;display:none">
+      <div class="card" style="--accent:var(--take)"><div class="nc-kicker" style="color:var(--take)">Known (mature)</div><div class="serif" style="font-size:2.4rem" id="statKnown">—</div></div>
+      <div class="card" style="--accent:var(--yamabuki)"><div class="nc-kicker" style="color:var(--yamabuki)">Still learning</div><div class="serif" style="font-size:2.4rem" id="statLearning">—</div></div>
+      <div class="card" style="--accent:var(--aiiro)"><div class="nc-kicker" style="color:var(--aiiro)">Kanji on cards</div><div class="serif" style="font-size:2.4rem" id="statKanji">—</div></div>
+      <div class="card" style="--accent:var(--shu)"><div class="nc-kicker" style="color:var(--shu)">Core kanji covered</div><div class="serif" style="font-size:2.4rem" id="statN5">—</div></div>
+    </div>
+  </section>
+
+  <!-- The plan -->
+  <section class="group reveal" id="plan" style="--accent:var(--shu)">
+    <div class="ghead">
+      <span class="tag" style="background:var(--shu)">計</span>
+      <h2>A suggested path</h2>
+      <span class="jp-sub">work top to bottom, or jump around</span>
+    </div>
+    <p class="gintro">The phases below follow the order most learners need things: solid kana first, then attaching <strong>sounds to kanji</strong> (the most common sticking point for read-first learners), then <strong>speaking</strong>, then testing. It's a hub, though — every page stands alone.</p>
+    <div class="navgrid">
+      <div class="card" style="--accent:var(--take)">
+        <div class="nc-kicker" style="color:var(--take)">Phase 1 · Foundations</div>
+        <h3 class="serif" style="margin:0 0 6px;font-size:1.25rem">Lock in the basics</h3>
+        <p style="margin:0;font-size:.92rem;color:var(--ink-soft)">Drill the <a href="kana.html">kana sheets</a> until recall is instant, and keep the <a href="particles.html">particle guide</a> handy — particles are what make sentences parse.</p>
+      </div>
+      <div class="card" style="--accent:var(--aiiro)">
+        <div class="nc-kicker" style="color:var(--aiiro)">Phase 2 · Readings</div>
+        <h3 class="serif" style="margin:0 0 6px;font-size:1.25rem">Give kanji a sound</h3>
+        <p style="margin:0;font-size:.92rem;color:var(--ink-soft)">On the <a href="kanji.html">kanji page</a>, learn on'yomi vs kun'yomi, then tap 🔊 to hear each reading. Drill with the reading quiz until 水 instantly "sounds like" みず.</p>
+      </div>
+      <div class="card" style="--accent:var(--murasaki)">
+        <div class="nc-kicker" style="color:var(--murasaki)">Phase 3 · Output</div>
+        <h3 class="serif" style="margin:0 0 6px;font-size:1.25rem">Start producing sound</h3>
+        <p style="margin:0;font-size:.92rem;color:var(--ink-soft)">Use the <a href="speaking.html">speaking page</a>: shadow the audio of high-frequency phrases out loud. A couple of minutes a day builds the skill silent reading never touches.</p>
+      </div>
+      <div class="card" style="--accent:var(--yamabuki)">
+        <div class="nc-kicker" style="color:var(--yamabuki)">Phase 4 · Prove it</div>
+        <h3 class="serif" style="margin:0 0 6px;font-size:1.25rem">Test &amp; track</h3>
+        <p style="margin:0;font-size:.92rem;color:var(--ink-soft)">Run the <a href="quizzes.html">dynamic quizzes</a> — they regenerate every time. With Anki connected, the <em>My vocab</em> mode quizzes the exact cards in the deck.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section cards -->
+  <section class="group reveal" style="--accent:var(--aiiro)">
+    <div class="ghead">
+      <span class="tag" style="background:var(--aiiro)">所</span>
+      <h2>Everything in the hub</h2>
+      <span class="jp-sub">pick a room</span>
+    </div>
+    <div class="navgrid">
+      <a class="navcard" href="kana.html" style="--accent:var(--take)">
+        <span class="nc-jp mincho">あ</span>
+        <div class="nc-kicker">Review · Drill</div><h3>Kana</h3>
+        <p>Every hiragana &amp; katakana sound on one sheet — base, dakuten, combos — plus a quick recall drill. Tap any to hear it.</p>
+      </a>
+      <a class="navcard" href="particles.html" style="--accent:var(--shu)">
+        <span class="nc-jp mincho">は</span>
+        <div class="nc-kicker">Cheat sheet</div><h3>Particles</h3>
+        <p>The colour-coded field guide to 助詞 — who, what, where, plus the but/because/if joiners everyone trips on.</p>
+      </a>
+      <a class="navcard" href="kanji.html" style="--accent:var(--aiiro)">
+        <span class="nc-jp mincho">水</span>
+        <div class="nc-kicker">Readings · Quiz</div><h3>Kanji</h3>
+        <p>On'yomi vs kun'yomi made clear, ~90 core kanji with spoken readings, and a "what does it sound like?" quiz.</p>
+      </a>
+      <a class="navcard" href="radicals.html" style="--accent:var(--asagi)">
+        <span class="nc-jp mincho">部</span>
+        <div class="nc-kicker">Building blocks</div><h3>Radicals</h3>
+        <p>All 214 Kangxi radicals — searchable, grouped by stroke count, with spoken names. The parts every kanji is made of.</p>
+      </a>
+      <a class="navcard" href="cheatsheets.html" style="--accent:var(--renga)">
+        <span class="nc-jp mincho">表</span>
+        <div class="nc-kicker">Reference</div><h3>Cheat sheets</h3>
+        <p>Numbers, counters, time, question words, こそあど, and full verb/adjective conjugation tables — all in one place.</p>
+      </a>
+      <a class="navcard" href="speaking.html" style="--accent:var(--murasaki)">
+        <span class="nc-jp mincho">声</span>
+        <div class="nc-kicker">Output · Shadowing</div><h3>Speaking</h3>
+        <p>Pronunciation, a pitch-accent primer, and 40+ must-know phrases you can hear and shadow out loud.</p>
+      </a>
+      <a class="navcard" href="quizzes.html" style="--accent:var(--yamabuki)">
+        <span class="nc-jp mincho">試</span>
+        <div class="nc-kicker">Dynamic tests</div><h3>Quizzes</h3>
+        <p>Self-generating quizzes across kana, kanji readings, and particles. New questions every run; tracks your score.</p>
+      </a>
+      <a class="navcard" href="kanji.html#today" style="--accent:var(--asagi)">
+        <span class="nc-jp mincho">今</span>
+        <div class="nc-kicker" id="sugKicker">Suggested now</div><h3 id="sugTitle">Today's focus</h3>
+        <p id="sugText">Not sure where to start? The kanji reading quiz is the highest-value drill for anyone who can recognise kanji but can't yet "hear" them.</p>
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="wrap-wide">
+  <p><span class="jp">頑張りましょう！</span> &nbsp;Everything here works offline, and Anki data stays in each visitor's own browser. Audio uses the device's Japanese voice; if 🔊 is silent, see the note on the Speaking page.</p>
+</footer>
+
+<script src="assets/audio.js"></script>
+<script src="assets/anki.js"></script>
+<script src="assets/kanji-data.js"></script>
+<script>
+  // reveal
+  const io = new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.06});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  // nav pill
+  AnkiData.initPill(document.getElementById('migContainer'));
+
+  // banner controls
+  const fileInput = document.getElementById('migFile');
+  const syncBtn = document.getElementById('ankiSync');
+  syncBtn.addEventListener('click', async ()=>{
+    syncBtn.disabled=true; const old=syncBtn.textContent; syncBtn.textContent='Syncing…';
+    const res = await AnkiData.syncLive();
+    syncBtn.disabled=false; syncBtn.textContent=old;
+    if(!res.ok){ if(confirm(res.error+'\n\nImport a file instead?')) fileInput.click(); }
+  });
+  document.getElementById('ankiImport').addEventListener('click',()=>fileInput.click());
+  document.getElementById('migClear').addEventListener('click',()=>{ if(confirm('Disconnect Anki data from this device?')) AnkiData.clear(); });
+  fileInput.addEventListener('change', async ()=>{
+    if(!fileInput.files[0]) return;
+    const res = await AnkiData.importFile(fileInput.files[0]);
+    if(!res.ok) alert(res.error);
+    fileInput.value='';
+  });
+
+  function coverage(d){ let c=0; KANJI.list.forEach(x=>{ if(d.kanji.has(x.k)) c++; }); return c; }
+  function render(d){
+    const t=document.getElementById('migTitle'), desc=document.getElementById('migDesc');
+    const stats=document.getElementById('statsRow'), clearBtn=document.getElementById('migClear');
+    const sug=document.getElementById('sugText'), sugK=document.getElementById('sugKicker'), sugT=document.getElementById('sugTitle');
+    if(d){
+      const tag = d.source==='live' ? 'live from Anki' : 'imported';
+      t.textContent='Anki connected — '+d.count+' words ('+tag+')';
+      desc.innerHTML='Updated '+new Date(d.updatedAt).toLocaleString()+'. Quizzes and the kanji page now adapt to your deck.';
+      stats.style.display=''; clearBtn.style.display='';
+      syncBtn.textContent='Re-sync from Anki';
+      document.getElementById('statKnown').textContent=d.knownCount;
+      document.getElementById('statLearning').textContent=d.learningCount;
+      document.getElementById('statKanji').textContent=d.kanjiCount;
+      const cov=coverage(d);
+      document.getElementById('statN5').textContent=cov+' / '+KANJI.list.length;
+      // adaptive suggestion: prefer a learning word, else an uncovered core kanji
+      const learn=d.words.filter(w=>w.status!=='known');
+      if(learn.length){
+        const pick=learn.slice(0,3).map(w=>w.w).join('・');
+        sugK.textContent='From your deck'; sugT.textContent='Drill what you’re learning';
+        sug.innerHTML='You have <b>'+d.learningCount+'</b> words still maturing — e.g. <b class="jp">'+pick+'</b>. Hit <em>My vocab</em> in the <a href="quizzes.html">quizzes</a>.';
+      } else {
+        const unknown=KANJI.list.filter(x=>!d.kanji.has(x.k));
+        sug.innerHTML = unknown.length
+          ? 'Deck looking mature! Fill gaps with core kanji like <b class="jp">'+unknown.slice(0,3).map(x=>x.k).join('・')+'</b> on the <a href="kanji.html">kanji page</a>.'
+          : 'Everything’s mature — keep it warm with the <a href="quizzes.html">dynamic quizzes</a>.';
+      }
+    } else {
+      t.textContent='Connect Anki to personalize everything';
+      stats.style.display='none'; clearBtn.style.display='none';
+      syncBtn.textContent='Sync from Anki';
+      sugK.textContent='Suggested now'; sugT.textContent='Today’s focus';
+      sug.textContent='Not sure where to start? The kanji reading quiz is the highest-value drill for anyone who can recognise kanji but can\'t yet "hear" them.';
+    }
+  }
+  AnkiData.onChange(render);
+  render(AnkiData.get());
+</script>
+</body>
+</html>

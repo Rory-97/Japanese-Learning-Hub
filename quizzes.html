@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quizzes — 試験 — ローリーの日本語ハブ</title>
+<link rel="stylesheet" href="assets/theme.css">
+<style>
+  .setup{max-width:620px;margin:0 auto;}
+  .setup .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:space-between;margin:14px 0;}
+  .setup .row > span{font-weight:700;color:var(--ink-soft);font-size:.9rem;}
+  .result-big{font-family:"Newsreader",serif;font-size:4rem;line-height:1;text-align:center;margin:6px 0;}
+  .miss{display:flex;gap:10px;align-items:center;background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:9px 12px;margin-bottom:8px;}
+  .miss .q{flex:1;font-size:.92rem;}
+  .miss .a{font-weight:700;color:var(--ok);}
+  .modecard{cursor:pointer;}
+  .modecard.sel{outline:3px solid var(--accent);outline-offset:2px;}
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="topnav-inner">
+    <a class="brand" href="index.html" style="gap:0"><span style="color:var(--shu)">ローリー</span><span style="color:var(--ink-soft)">の</span><span style="color:var(--aiiro)">日本語</span><span style="color:var(--take)">ハブ</span></a>
+    <a class="tab" href="index.html">Home</a>
+    <a class="tab" href="kana.html">Kana</a>    <a class="tab" href="kanji.html">Kanji</a>
+    <a class="tab" href="particles.html">Particles</a>
+    <a class="tab" href="cheatsheets.html">Cheats</a>
+    <a class="tab" href="speaking.html">Speaking</a>
+    <a class="tab active" href="quizzes.html">Quizzes</a>
+    <a class="tab" href="setup.html">Setup</a>
+    <span class="spacer"></span>
+    <span id="migContainer"></span>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="kana-ghost" aria-hidden="true">試</div>
+  <div class="wrap">
+    <p class="eyebrow">Dynamic tests</p>
+    <h1>Quizzes that <em>rebuild</em><br>themselves every time.</h1>
+    <p class="jp-title">試験 ・ しけん</p>
+    <p class="lede"><strong>Nothing here is memorisable in order — every run draws fresh questions and shuffles the options.</strong> Pick a focus, choose a length, and go. Connect Anki and the <em>My vocab</em> mode quizzes your actual cards, leaning on the words you're still learning. Wrong answers come back more often, and you hear every Japanese answer read aloud.</p>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- SETUP -->
+  <section class="group" id="setupView" style="--accent:var(--yamabuki);padding-top:28px">
+    <div class="setup">
+      <div class="ghead"><span class="tag" style="background:var(--yamabuki)">選</span><h2>Build your quiz</h2></div>
+      <p class="gintro">Choose a focus:</p>
+      <div class="grid" style="grid-template-columns:1fr 1fr" id="modeGrid">
+        <div class="card modecard sel" data-mode="kana" style="--accent:var(--take)"><div class="nc-kicker" style="color:var(--take);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;font-weight:700">Recall</div><h3 class="serif" style="margin:4px 0 2px;font-size:1.25rem">Kana</h3><p style="margin:0;font-size:.86rem;color:var(--ink-soft)">Read hiragana &amp; katakana at speed.</p></div>
+        <div class="card modecard" data-mode="kanji" style="--accent:var(--aiiro)"><div class="nc-kicker" style="color:var(--aiiro);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;font-weight:700">Readings</div><h3 class="serif" style="margin:4px 0 2px;font-size:1.25rem">Kanji</h3><p style="margin:0;font-size:.86rem;color:var(--ink-soft)">Hear what each kanji word sounds like.</p></div>
+        <div class="card modecard" data-mode="particles" style="--accent:var(--shu)"><div class="nc-kicker" style="color:var(--shu);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;font-weight:700">Grammar</div><h3 class="serif" style="margin:4px 0 2px;font-size:1.25rem">Particles</h3><p style="margin:0;font-size:.86rem;color:var(--ink-soft)">Fill the gap with は・が・を…</p></div>
+        <div class="card modecard" data-mode="mixed" style="--accent:var(--murasaki)"><div class="nc-kicker" style="color:var(--murasaki);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;font-weight:700">Everything</div><h3 class="serif" style="margin:4px 0 2px;font-size:1.25rem">Mixed</h3><p style="margin:0;font-size:.86rem;color:var(--ink-soft)">Random across all three.</p></div>
+        <div class="card modecard" data-mode="vocab" id="vocabCard" style="--accent:var(--asagi);grid-column:1/-1;opacity:.55"><div class="nc-kicker" style="color:var(--asagi);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;font-weight:700">Adaptive · your deck</div><h3 class="serif" style="margin:4px 0 2px;font-size:1.25rem">My vocab <span id="vocabBadge" style="font-size:.8rem;font-weight:400;color:var(--ink-soft)">— connect Anki to unlock</span></h3><p style="margin:0;font-size:.86rem;color:var(--ink-soft)">Quizzes the real words from your Anki cards — readings + meanings, weighted toward what you're still learning.</p></div>
+      </div>
+
+      <div class="row"><span>Length</span>
+        <div class="seg" id="lenSeg">
+          <button data-n="10" class="active">10 questions</button>
+          <button data-n="20">20</button>
+          <button data-n="0">Endless</button>
+        </div>
+      </div>
+      <div class="row" id="knownRow" style="display:none"><span>Anki focus</span>
+        <label class="btn ghost" style="cursor:pointer;user-select:none"><input type="checkbox" id="useKnown" style="margin-right:8px">Kanji mode: only kanji in my deck</label>
+      </div>
+      <div style="text-align:center;margin-top:22px">
+        <button class="btn primary" id="startBtn" style="font-size:1rem;padding:12px 28px">Start quiz →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUIZ -->
+  <section class="group" id="quizView" style="--accent:var(--yamabuki);display:none;padding-top:28px">
+    <div class="quiz-card" style="--accent:var(--yamabuki)">
+      <div class="quiz-bar">
+        <div class="progress"><i id="qProg" style="width:0%"></i></div>
+        <div class="score" id="qScore">0 / 0</div>
+      </div>
+      <div class="quiz-prompt">
+        <div class="label" id="qLabel">—</div>
+        <div class="big" id="qPrompt">—</div>
+        <div class="sub" id="qSub"></div>
+        <button class="spk" id="qSpeak" style="--accent:var(--yamabuki);display:none">🔊</button>
+      </div>
+      <div class="opts" id="qOpts"></div>
+      <div class="feedback" id="qFeedback"></div>
+      <div style="text-align:center;margin-top:16px"><button class="btn ghost" id="quitBtn">End quiz</button></div>
+    </div>
+  </section>
+
+  <!-- RESULTS -->
+  <section class="group" id="resultView" style="--accent:var(--yamabuki);display:none;padding-top:28px">
+    <div class="quiz-card" style="--accent:var(--yamabuki)">
+      <div class="quiz-prompt" style="margin-bottom:8px">
+        <div class="label">Result</div>
+        <div class="result-big" id="rPct">—</div>
+        <div class="sub" id="rLine"></div>
+      </div>
+      <div id="rMisses" style="margin-top:14px"></div>
+      <div style="display:flex;gap:10px;justify-content:center;margin-top:20px;flex-wrap:wrap">
+        <button class="btn accent" id="againBtn" style="--accent:var(--yamabuki)">Same again</button>
+        <button class="btn ghost" id="newBtn">New quiz</button>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="wrap">
+  <p><span class="jp">よくできました！</span> &nbsp;Aim for short, frequent rounds over marathon sessions — 10 questions a day across rotating modes keeps everything fresh without burning out.</p>
+</footer>
+
+<script src="assets/audio.js"></script>
+<script src="assets/anki.js"></script>
+<script src="assets/kana-data.js"></script>
+<script src="assets/kanji-data.js"></script>
+<script src="assets/particle-quiz-data.js"></script>
+<script>
+  AnkiData.initPill(document.getElementById('migContainer'));
+
+  let mode='kana', length=10, useKnown=false;
+  let queue=[], idx=0, right=0, total=0, misses=[];
+
+  // ---- mode / length selectors ----
+  document.getElementById('modeGrid').addEventListener('click',e=>{
+    const c=e.target.closest('.modecard'); if(!c) return;
+    if(c.dataset.mode==='vocab' && !vocabReady()){ alert('Connect Anki first (and make sure your cards have readings) to use My vocab.'); return; }
+    document.querySelectorAll('.modecard').forEach(x=>x.classList.remove('sel'));
+    c.classList.add('sel'); mode=c.dataset.mode;
+  });
+  document.getElementById('lenSeg').addEventListener('click',e=>{
+    const b=e.target.closest('button'); if(!b) return;
+    [...e.currentTarget.children].forEach(x=>x.classList.remove('active'));
+    b.classList.add('active'); length=parseInt(b.dataset.n);
+  });
+  document.getElementById('useKnown').addEventListener('change',e=>useKnown=e.target.checked);
+  function vocabReady(){ return AnkiData.words().some(w=>w.r); }
+  function refreshMig(){
+    const on=AnkiData.connected();
+    document.getElementById('knownRow').style.display=on?'flex':'none';
+    const card=document.getElementById('vocabCard'), badge=document.getElementById('vocabBadge');
+    if(vocabReady()){
+      const d=AnkiData.get();
+      card.style.opacity='1';
+      badge.textContent='— '+d.words.filter(w=>w.r).length+' words ready';
+    } else {
+      card.style.opacity='.55';
+      badge.textContent='— connect Anki to unlock';
+      if(mode==='vocab'){ mode='kana'; document.querySelectorAll('.modecard').forEach(x=>x.classList.toggle('sel',x.dataset.mode==='kana')); }
+    }
+  }
+  AnkiData.onChange(refreshMig); refreshMig();
+
+  const rnd=a=>a[Math.floor(Math.random()*a.length)];
+  const shuffle=a=>a.slice().sort(()=>Math.random()-0.5);
+  function distinct(arr,n,exclude,key){
+    const out=[],used=new Set(exclude);
+    let guard=0;
+    while(out.length<n && guard++<400){ const x=rnd(arr); const k=key(x); if(!used.has(k)){used.add(k);out.push(x);} }
+    return out;
+  }
+
+  // ---- question generators ----
+  function qKana(){
+    const base=KANA.drill.hiragana.concat(KANA.drill.katakana,KANA.drill.hiraDaku,KANA.drill.kataDaku);
+    const c=rnd(base);
+    const ds=distinct(base,3,[c.romaji],x=>x.romaji);
+    return {label:'What sound is this?', prompt:c.kana, promptJP:true, sub:'',
+      speak:c.kana, options:shuffle([c,...ds].map(x=>({text:x.romaji}))), answer:c.romaji,
+      explain:'<span class="jp">'+c.kana+'</span> = '+c.romaji};
+  }
+  function qKanji(){
+    let arr=KANJI.list.slice();
+    if(useKnown && AnkiData.connected()){ const d=AnkiData.get(); const f=arr.filter(x=>d.kanji.has(x.k)); if(f.length>=4) arr=f; }
+    const c=rnd(arr);
+    const ds=distinct(arr,3,[c.ex.r],x=>x.ex.r);
+    return {label:'How is this read?', prompt:c.ex.w, promptJP:true, sub:c.ex.m,
+      speak:c.ex.r, options:shuffle([c,...ds].map(x=>({text:x.ex.r,jp:true}))), answer:c.ex.r,
+      explain:'<span class="jp">'+c.ex.w+'</span> = '+c.ex.r+' ('+c.ex.m+')'};
+  }
+  function qVocab(){
+    const all=AnkiData.words().filter(w=>w.r);
+    // weight toward "learning" words (2×); fall back to all
+    const bag=[]; all.forEach(w=>{ bag.push(w); if(w.status!=='known') bag.push(w); });
+    const c=rnd(bag.length?bag:all);
+    const ds=distinct(all.length>=4?all:KANJI.list.map(k=>({r:k.ex.r})),3,[c.r],x=>x.r);
+    const askMeaning = c.m && Math.random()<0.4;
+    if(askMeaning){
+      // word → meaning (multiple choice from other meanings)
+      const pool=all.filter(w=>w.m);
+      const dm=distinct(pool.length>=4?pool:all,3,[c.m],x=>x.m||x.r);
+      return {label:'What does it mean?', prompt:c.w, promptJP:true, sub:c.r,
+        speak:c.r, options:shuffle([c,...dm].map(x=>({text:(x.m||'—')}))), answer:c.m,
+        explain:'<span class="jp">'+c.w+'</span> ('+c.r+') = '+c.m};
+    }
+    return {label:'How is this read?', prompt:c.w, promptJP:true, sub:c.m||'',
+      speak:c.r, options:shuffle([c,...ds].map(x=>({text:x.r,jp:true}))), answer:c.r,
+      explain:'<span class="jp">'+c.w+'</span> = '+c.r+(c.m?' ('+c.m+')':'')};
+  }
+  function qParticle(){
+    const c=rnd(PARTICLE_Q);
+    return {label:'Fill the gap', prompt:c.jp.replace('＿','<u style="text-decoration-color:var(--shu);text-underline-offset:5px">＿</u>'), promptJP:true, promptHTML:true, sub:c.en,
+      speak:c.full, options:shuffle(c.options.map(o=>({text:o,jp:true}))), answer:c.answer,
+      explain:c.why+'  →  <span class="jp">'+c.full+'</span>'};
+  }
+  function genOne(){
+    if(mode==='kana') return qKana();
+    if(mode==='kanji') return qKanji();
+    if(mode==='particles') return qParticle();
+    if(mode==='vocab') return qVocab();
+    const gens=[qKana,qKanji,qParticle]; if(vocabReady()) gens.push(qVocab);
+    return rnd(gens)();
+  }
+
+  // ---- flow ----
+  function show(view){ ['setupView','quizView','resultView'].forEach(v=>document.getElementById(v).style.display=v===view?'':'none'); }
+  function start(){
+    idx=0;right=0;total=0;misses=[];
+    const n = length===0?9999:length;
+    queue=[]; for(let i=0;i<Math.min(n, length===0?40:n);i++) queue.push(null); // lazily generated
+    endless = length===0;
+    show('quizView'); nextQ();
+  }
+  let endless=false, cur=null;
+  function nextQ(){
+    if(!endless && idx>=length){ return finish(); }
+    cur=genOne();
+    document.getElementById('qLabel').textContent=cur.label;
+    const p=document.getElementById('qPrompt');
+    if(cur.promptHTML) p.innerHTML=cur.prompt; else p.textContent=cur.prompt;
+    p.classList.toggle('jp', !!cur.promptJP);
+    p.style.fontSize = cur.label==='Fill the gap' ? 'clamp(1.6rem,7vw,2.6rem)' : '';
+    document.getElementById('qSub').textContent=cur.sub||'';
+    const sp=document.getElementById('qSpeak'); sp.style.display='none';
+    const host=document.getElementById('qOpts'); host.innerHTML='';
+    cur.options.forEach(o=>{
+      const b=document.createElement('button'); b.className='opt'+(o.jp?' jp':''); b.textContent=o.text;
+      b.addEventListener('click',()=>choose(b,o.text)); host.appendChild(b);
+    });
+    document.getElementById('qFeedback').textContent=''; document.getElementById('qFeedback').className='feedback';
+    updateBar();
+  }
+  function choose(btn,text){
+    const ok=text===cur.answer; total++; if(ok)right++; else misses.push(cur);
+    [...document.getElementById('qOpts').children].forEach(b=>{b.disabled=true; if(b.textContent===cur.answer) b.classList.add('correct');});
+    if(!ok) btn.classList.add('wrong');
+    const fb=document.getElementById('qFeedback');
+    fb.innerHTML=(ok?'正解！ ':'')+cur.explain; fb.className='feedback '+(ok?'ok':'bad');
+    if(cur.speak){ const sp=document.getElementById('qSpeak'); sp.style.display=''; sp.onclick=()=>JPAudio.button(cur.speak,sp); JPAudio.speak(cur.speak); }
+    idx++; updateBar();
+    setTimeout(nextQ, ok?900:1900);
+  }
+  function updateBar(){
+    document.getElementById('qScore').textContent=right+' / '+total;
+    const pct = endless ? (total?right/total*100:0) : (idx/length*100);
+    document.getElementById('qProg').style.width=pct+'%';
+  }
+  function finish(){
+    show('resultView');
+    const pct = total?Math.round(right/total*100):0;
+    document.getElementById('rPct').textContent=pct+'%';
+    document.getElementById('rLine').textContent=right+' of '+total+' correct'+(pct>=90?' — excellent!':pct>=70?' — solid.':pct>=50?' — keep going.':' — worth another round.');
+    const host=document.getElementById('rMisses');
+    if(misses.length){
+      host.innerHTML='<div style="font-weight:700;font-size:.85rem;color:var(--ink-soft);margin:6px 0 10px">Review these '+misses.length+':</div>';
+      misses.slice(0,12).forEach(m=>{
+        const d=document.createElement('div'); d.className='miss';
+        d.innerHTML='<div class="q">'+(m.promptHTML?m.prompt:'<span class="'+(m.promptJP?'jp':'')+'">'+m.prompt+'</span>')+' → <span class="a">'+m.answer+'</span></div>';
+        const b=JPAudio.makeBtn(m.speak||m.answer,'sm'); d.appendChild(b);
+        host.appendChild(d);
+      });
+    } else host.innerHTML='<p class="note" style="--accent:var(--ok);color:var(--ok)">Perfect round — nothing to review. 🎌</p>';
+  }
+  document.getElementById('startBtn').addEventListener('click',start);
+  document.getElementById('quitBtn').addEventListener('click',finish);
+  document.getElementById('againBtn').addEventListener('click',start);
+  document.getElementById('newBtn').addEventListener('click',()=>show('setupView'));
+</script>
+</body>
+</html>

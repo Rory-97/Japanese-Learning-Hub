@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Speaking — 話す — ローリーの日本語ハブ</title>
+<link rel="stylesheet" href="assets/theme.css">
+<style>
+  .phrase{display:flex;align-items:center;gap:12px;background:var(--paper-2);border:1px solid var(--line);border-radius:12px;padding:12px 14px;box-shadow:var(--shadow);border-left:4px solid var(--accent);}
+  .phrase .body{flex:1;min-width:0;}
+  .phrase .jpx{font-size:1.12rem;font-weight:600;}
+  .phrase .ro{font-size:.82rem;color:var(--ink-soft);font-style:italic;}
+  .phrase .en{font-size:.86rem;color:var(--ink-soft);}
+  .plist{display:grid;gap:9px;}
+  .pron td{padding:9px 8px;border-bottom:1px solid var(--line);vertical-align:top;font-size:.94rem;}
+  .pron td:first-child{font-family:"Zen Old Mincho",serif;font-weight:700;white-space:nowrap;width:1%;padding-right:14px;color:var(--accent);}
+  .pron tr:last-child td{border-bottom:none;}
+  .pitch{display:inline-flex;align-items:flex-end;gap:2px;height:26px;vertical-align:middle;margin-left:6px}
+  .pitch span{width:14px;border-radius:3px 3px 0 0;background:var(--murasaki);opacity:.85}
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="topnav-inner">
+    <a class="brand" href="index.html" style="gap:0"><span style="color:var(--shu)">ローリー</span><span style="color:var(--ink-soft)">の</span><span style="color:var(--aiiro)">日本語</span><span style="color:var(--take)">ハブ</span></a>
+    <a class="tab" href="index.html">Home</a>
+    <a class="tab" href="kana.html">Kana</a>    <a class="tab" href="kanji.html">Kanji</a>
+    <a class="tab" href="particles.html">Particles</a>
+    <a class="tab" href="cheatsheets.html">Cheats</a>
+    <a class="tab active" href="speaking.html">Speaking</a>
+    <a class="tab" href="quizzes.html">Quizzes</a>
+    <a class="tab" href="setup.html">Setup</a>
+    <span class="spacer"></span>
+    <span id="migContainer"></span>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="kana-ghost" aria-hidden="true">声</div>
+  <div class="wrap">
+    <p class="eyebrow">Pronunciation &amp; output</p>
+    <h1>The sound system —<br>and how to <em>practise</em> it.</h1>
+    <p class="jp-title">話す ・ はなす</p>
+    <p class="lede"><strong>Spoken Japanese is built from a small, stable set of sounds, with meaning carried by vowel length, doubled consonants, and pitch rather than stress.</strong> This page covers the sound inventory and its traps for English speakers, a short pitch-accent primer, and high-frequency phrases with audio for <em>shadowing</em> — playing a line and immediately saying it back aloud, matching the rhythm.</p>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- audio check -->
+  <section class="group" style="--accent:var(--asagi);padding-top:26px">
+    <div class="banner" style="border-left:4px solid var(--asagi)">
+      <div class="grow">
+        <h3>🔊 Quick audio check</h3>
+        <p id="audioStatus">Tap test — this plays through your computer's Japanese voice.</p>
+      </div>
+      <button class="btn accent" id="audioTest" style="--accent:var(--asagi)">Test audio</button>
+    </div>
+    <details style="margin-top:10px">
+      <summary style="cursor:pointer;font-weight:600;font-size:.9rem;color:var(--ink-soft)">No sound, or it reads in English? Fix it →</summary>
+      <p class="note" style="--accent:var(--asagi);margin-top:10px">The hub uses whatever Japanese text-to-speech voice your OS has installed. <b>Windows:</b> Settings → Time &amp; Language → Language &amp; region → add <b>日本語 (Japanese)</b>, and under its options install the <b>Speech</b> pack, then restart your browser. <b>Mac:</b> System Settings → Accessibility → Spoken Content → System Voice → Manage Voices → add a Japanese voice (e.g. Kyoko). Chrome and Edge generally have the best built-in Japanese voices.</p>
+    </details>
+  </section>
+
+  <!-- pronunciation -->
+  <section class="group reveal" style="--accent:var(--shu)">
+    <div class="ghead"><span class="tag" style="background:var(--shu)">音</span><h2>Pronunciation, the short version</h2><span class="jp-sub">get these and you sound clean</span></div>
+    <p class="gintro">Japanese is built from a small, <em>stable</em> set of sounds — once you nail them they never drift, unlike English vowels. The traps for English speakers:</p>
+    <div class="card" style="--accent:var(--shu);padding:6px 16px">
+      <table class="pron" style="width:100%;border-collapse:collapse">
+        <tr><td class="jp">あいうえお</td><td><b>Five pure vowels, always the same.</b> a="ah", i="ee", u="oo" (lips relaxed, not rounded), e="eh", o="oh". Every kana ends in one of these.</td></tr>
+        <tr><td class="jp">ら り る れ ろ</td><td><b>The "r" is a light tap</b> — between English r, l, and d. Flick the tongue once behind the teeth, like the middle of "butter."</td></tr>
+        <tr><td class="jp">ふ</td><td><b>"fu" is soft</b> — no teeth on lip. Blow gently like blowing out a candle ("hu/fu").</td></tr>
+        <tr><td class="jp">つ</td><td><b>"tsu"</b> — the "ts" of "cats," but at the <em>start</em> of the syllable.</td></tr>
+        <tr><td class="jp">ー / おう</td><td><b>Long vowels matter.</b> おばさん (aunt) vs おばあさん (grandma) differ only in length — and in meaning. Hold long vowels for a full extra beat.</td></tr>
+        <tr><td class="jp">っ</td><td><b>Small tsu = a silent pause.</b> One beat of held breath: きって (kit-te, stamp) vs きて (ki-te, come).</td></tr>
+        <tr><td class="jp">です / ます</td><td><b>The u often goes near-silent.</b> "desu" → "dess", "masu" → "mass". Native-sounding and easy.</td></tr>
+        <tr><td class="jp">は・へ・を</td><td><b>Particle spellings lie.</b> As particles they're said <b>wa</b>, <b>e</b>, and <b>o</b> — not ha, he, wo.</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <!-- pitch accent -->
+  <section class="group reveal" style="--accent:var(--murasaki)">
+    <div class="ghead"><span class="tag" style="background:var(--murasaki)">高</span><h2>Pitch accent, gently</h2><span class="jp-sub">高低アクセント — don't stress, pitch</span></div>
+    <p class="gintro">Japanese doesn't stress syllables louder like English — it raises and drops <em>pitch</em>. You don't need to master this now, but knowing it exists stops you from sounding flat. Each mora is either high or low; the classic minimal pair:</p>
+    <div class="grid" style="grid-template-columns:1fr 1fr">
+      <div class="card" style="--accent:var(--murasaki)">
+        <div style="font-size:1.3rem" class="jp">はし <span style="color:var(--ink-soft);font-size:.9rem">(箸)</span>
+          <span class="pitch"><span style="height:24px"></span><span style="height:10px"></span></span></div>
+        <p style="margin:6px 0 0;font-size:.88rem;color:var(--ink-soft)"><b>HA</b>-shi — high then low = <b>chopsticks</b>.</p>
+        <div style="margin-top:8px"><button class="btn ghost" onclick="JPAudio.speak('箸')">🔊 hear "hashi" (chopsticks)</button></div>
+      </div>
+      <div class="card" style="--accent:var(--murasaki)">
+        <div style="font-size:1.3rem" class="jp">はし <span style="color:var(--ink-soft);font-size:.9rem">(橋)</span>
+          <span class="pitch"><span style="height:10px"></span><span style="height:24px"></span></span></div>
+        <p style="margin:6px 0 0;font-size:.88rem;color:var(--ink-soft)">ha-<b>SHI</b> — low then high = <b>bridge</b>.</p>
+        <div style="margin-top:8px"><button class="btn ghost" onclick="JPAudio.speak('橋')">🔊 hear "hashi" (bridge)</button></div>
+      </div>
+    </div>
+    <p class="note" style="--accent:var(--murasaki);margin-top:14px">🎧 <b>How to practise:</b> for now, just <em>imitate</em>. When you shadow a phrase, copy its melody, not just its sounds. Your ear will pick up the patterns long before you can name them. (Synthesised audio approximates pitch — a real voice is the gold standard, so use this alongside the native audio captured on your mined Anki cards.)</p>
+  </section>
+
+  <!-- phrases -->
+  <section class="group reveal" id="phrases" style="--accent:var(--take)">
+    <div class="ghead"><span class="tag" style="background:var(--take)">言</span><h2>Say-these-first phrases</h2><span class="jp-sub">高頻度 — high frequency</span></div>
+    <p class="gintro">The phrases that come up in nearly every first conversation. <b>Shadowing drill:</b> tap 🔊, then immediately say it back out loud, matching the rhythm — repeat 3×. Use the speed slider to slow tricky ones down.</p>
+    <div class="banner" style="border-left:4px solid var(--take);margin-bottom:18px">
+      <div class="grow"><h3>Playback speed</h3><p>Slow it down while learning, then push back to natural.</p></div>
+      <input type="range" id="rate" min="0.5" max="1.1" step="0.05" value="0.9" style="flex:1 1 160px;accent-color:var(--take)">
+      <span class="score" id="rateVal">0.9×</span>
+    </div>
+    <div id="phraseHost"></div>
+  </section>
+
+  <!-- words from the connected Anki deck -->
+  <section class="group" id="deckShadow" style="--accent:var(--asagi);display:none">
+    <div class="ghead"><span class="tag" style="background:var(--asagi)">札</span><h2>Shadow the deck</h2><span class="jp-sub">words from the connected Anki collection</span></div>
+    <p class="gintro">Learning-stage words pulled straight from the connected Anki deck. Cards mined by reading tend to stay read-only — saying each one aloud (word, then reading) moves it into the spoken vocabulary. Same drill: tap 🔊, repeat 3×. The list refreshes as the deck changes.</p>
+    <div class="plist" id="deckHost"></div>
+  </section>
+
+</main>
+
+<footer class="wrap">
+  <p><span class="jp">口に出して！</span> &nbsp;Two minutes of speaking aloud beats twenty of silent reading for this skill. Shadow one category a day, and combine with the native audio on your mined Anki cards for pitch you can trust.</p>
+</footer>
+
+<script src="assets/audio.js"></script>
+<script src="assets/anki.js"></script>
+<script src="assets/phrases-data.js"></script>
+<script>
+  AnkiData.initPill(document.getElementById('migContainer'));
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.05});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  let rate=0.9;
+  const rateEl=document.getElementById('rate'), rateVal=document.getElementById('rateVal');
+  rateEl.addEventListener('input',()=>{rate=parseFloat(rateEl.value);rateVal.textContent=rate.toFixed(2)+'×';});
+
+  // audio test
+  document.getElementById('audioTest').addEventListener('click',()=>{
+    const st=document.getElementById('audioStatus');
+    JPAudio.speak('こんにちは。はじめまして。',{rate:rate});
+    setTimeout(()=>{
+      st.textContent = JPAudio.hasJP()
+        ? '✓ Japanese voice found — you should have just heard "konnichiwa, hajimemashite."'
+        : '⚠ No dedicated Japanese voice detected. You may hear nothing or an English reading — see "Fix it" below.';
+    },300);
+  });
+
+  // phrases
+  const host=document.getElementById('phraseHost');
+  PHRASES.forEach(group=>{
+    const lab=document.createElement('div'); lab.className='catlabel';
+    lab.style.cssText='font-family:"Zen Old Mincho",serif;font-weight:700;font-size:1.12rem;margin:24px 0 11px;display:flex;align-items:center;gap:10px;';
+    lab.innerHTML=group.cat+'<span style="flex:1;height:1px;background:var(--line)"></span>';
+    host.appendChild(lab);
+    const list=document.createElement('div'); list.className='plist';
+    group.items.forEach(p=>{
+      const row=document.createElement('div'); row.className='phrase'; row.style.setProperty('--accent','var(--take)');
+      row.innerHTML='<div class="body"><div class="jpx jp">'+p.jp+'</div><div class="ro">'+p.romaji+'</div><div class="en">'+p.en+'</div></div>';
+      const b=document.createElement('button'); b.className='spk'; b.style.setProperty('--accent','var(--take)'); b.textContent='🔊';
+      b.addEventListener('click',()=>{b.classList.add('playing');JPAudio.speak(p.jp,{rate:rate,onend:()=>b.classList.remove('playing')});setTimeout(()=>b.classList.remove('playing'),4000);});
+      row.insertBefore(b,row.firstChild);
+      list.appendChild(row);
+    });
+    host.appendChild(list);
+  });
+
+  // shadowing rows built from the connected Anki deck
+  function buildDeckShadow(){
+    const sec=document.getElementById('deckShadow'), dh=document.getElementById('deckHost');
+    dh.innerHTML='';
+    if(!AnkiData.connected()){ sec.style.display='none'; return; }
+    let pool=AnkiData.learningWords(); if(!pool.length) pool=AnkiData.words();
+    const pick=pool.slice(0,18);
+    if(!pick.length){ sec.style.display='none'; return; }
+    sec.style.display='';
+    pick.forEach(p=>{
+      const row=document.createElement('div'); row.className='phrase'; row.style.setProperty('--accent','var(--asagi)');
+      row.innerHTML='<div class="body"><div class="jpx jp">'+p.w+'</div><div class="ro jp">'+(p.r||'')+'</div><div class="en">'+(p.m||'')+'</div></div>';
+      const b=document.createElement('button'); b.className='spk'; b.style.setProperty('--accent','var(--asagi)'); b.textContent='🔊';
+      b.addEventListener('click',()=>{b.classList.add('playing');JPAudio.speak(p.r||p.w,{rate:rate,onend:()=>b.classList.remove('playing')});setTimeout(()=>b.classList.remove('playing'),4000);});
+      row.insertBefore(b,row.firstChild);
+      dh.appendChild(row);
+    });
+  }
+  AnkiData.onChange(buildDeckShadow); buildDeckShadow();
+</script>
+</body>
+</html>

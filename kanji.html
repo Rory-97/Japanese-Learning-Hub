@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kanji — 漢字 — ローリーの日本語ハブ</title>
+<link rel="stylesheet" href="assets/theme.css">
+<style>
+  .kj-card{background:var(--paper-2);border:1px solid var(--line);border-radius:14px;padding:14px 14px 12px;box-shadow:var(--shadow);border-left:4px solid var(--accent);position:relative;transition:transform .12s ease,box-shadow .12s ease;}
+  .kj-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg);}
+  .kj-card .known{position:absolute;top:8px;right:9px;font-size:.62rem;font-weight:800;color:var(--ok);background:color-mix(in srgb,var(--ok) 14%,transparent);padding:1px 7px;border-radius:999px;}
+  .kj-top{display:flex;gap:12px;align-items:flex-start;}
+  .kj-glyph{font-family:"Zen Old Mincho",serif;font-weight:700;font-size:3rem;line-height:.9;color:var(--accent);}
+  .kj-mean{font-weight:800;font-size:1rem;}
+  .kj-read{font-size:.8rem;color:var(--ink-soft);margin-top:3px;line-height:1.5;}
+  .kj-read .on{color:var(--shu);font-weight:700;}
+  .kj-read .kun{color:var(--asagi);font-weight:700;}
+  .kj-ex{display:flex;align-items:center;gap:8px;margin-top:10px;padding-top:9px;border-top:1px solid var(--line);font-size:.9rem;}
+  .kj-ex .w{font-weight:700;}
+  .kj-ex .r{color:var(--ink-soft);}
+  .kj-ex .m{color:var(--ink-soft);font-size:.82rem;margin-left:auto;text-align:right;}
+  .kj-sent{margin-top:7px;padding-top:7px;border-top:1px dashed var(--line);color:var(--ink-soft);font-size:.8rem;line-height:1.5;}
+  .kj-sent mark.hl{background:color-mix(in srgb,var(--yamabuki) 28%,transparent);color:var(--ink);font-weight:700;border-radius:4px;padding:0 2px;}
+  .catlabel{font-family:"Zen Old Mincho",serif;font-weight:700;font-size:1.15rem;margin:26px 0 12px;color:var(--ink);display:flex;align-items:center;gap:10px;}
+  .catlabel::after{content:"";flex:1;height:1px;background:var(--line);}
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="topnav-inner">
+    <a class="brand" href="index.html" style="gap:0"><span style="color:var(--shu)">ローリー</span><span style="color:var(--ink-soft)">の</span><span style="color:var(--aiiro)">日本語</span><span style="color:var(--take)">ハブ</span></a>
+    <a class="tab" href="index.html">Home</a>
+    <a class="tab" href="kana.html">Kana</a>    <a class="tab active" href="kanji.html">Kanji</a>
+    <a class="tab" href="particles.html">Particles</a>
+    <a class="tab" href="cheatsheets.html">Cheats</a>
+    <a class="tab" href="speaking.html">Speaking</a>
+    <a class="tab" href="quizzes.html">Quizzes</a>
+    <a class="tab" href="setup.html">Setup</a>
+    <span class="spacer"></span>
+    <span id="migContainer"></span>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="kana-ghost" aria-hidden="true">水</div>
+  <div class="wrap">
+    <p class="eyebrow">The characters</p>
+    <h1>Kanji — characters that<br>carry <em>meaning and sound</em>.</h1>
+    <p class="jp-title">漢字 ・ かんじ</p>
+    <p class="lede"><strong>Kanji are logographic characters adopted from Chinese, used alongside kana to write most nouns, verb stems, and adjectives.</strong> Everyday Japanese runs on roughly 2,100 of them, and most carry two kinds of reading — a borrowed on'yomi used in compounds and a native kun'yomi used standalone. Below: the core set with readings and audio, and a quiz that drills the character-to-sound link. Both can focus on just the kanji in a connected Anki deck.</p>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <div class="subtabs"><a class="active" href="kanji.html">漢字 Kanji</a><a href="radicals.html">部首 Radicals</a></div>
+
+  <!-- on vs kun -->
+  <section class="group reveal" style="--accent:var(--shu);padding-top:28px">
+    <div class="ghead"><span class="tag" style="background:var(--shu)">音</span><h2>On'yomi vs kun'yomi</h2><span class="jp-sub">the one idea that unlocks readings</span></div>
+    <p class="gintro">Most kanji have <em>two kinds</em> of reading, and knowing which one applies is most of the battle. Here's the whole concept in one example — <span class="jp">水</span> (water):</p>
+    <div class="card" style="--accent:var(--shu);border-left-width:4px;padding:18px">
+      <div class="grid" style="grid-template-columns:1fr 1fr;gap:14px">
+        <div style="background:var(--paper);border:1px solid var(--line);border-radius:11px;padding:13px">
+          <div style="font-weight:800;color:var(--asagi);font-size:.82rem;margin-bottom:4px">訓読み KUN'YOMI — native reading</div>
+          <div style="font-size:1.05rem" class="jp">水 → <b style="color:var(--asagi)">みず</b></div>
+          <div style="font-size:.84rem;color:var(--ink-soft);margin-top:4px">Used when the kanji stands <b>alone</b> or carries a hiragana tail (okurigana). This is the original Japanese word.</div>
+        </div>
+        <div style="background:var(--paper);border:1px solid var(--line);border-radius:11px;padding:13px">
+          <div style="font-weight:800;color:var(--shu);font-size:.82rem;margin-bottom:4px">音読み ON'YOMI — borrowed reading</div>
+          <div style="font-size:1.05rem" class="jp">水曜日 → <b style="color:var(--shu)">すい</b>ようび</div>
+          <div style="font-size:.84rem;color:var(--ink-soft);margin-top:4px">Used in <b>compounds</b> (kanji glued to other kanji). Borrowed from Chinese centuries ago.</div>
+        </div>
+      </div>
+      <p class="note" style="--accent:var(--shu);margin-top:14px">⚡ <b>Rough rule of thumb:</b> kanji <b>alone</b> or with okurigana → reach for <b style="color:var(--asagi)">kun</b>. Kanji <b>stuck to another kanji</b> (a 熟語/jukugo compound) → reach for <b style="color:var(--shu)">on</b>. In this hub, <span style="color:var(--shu);font-weight:700">on'yomi shows in red</span>, <span style="color:var(--asagi);font-weight:700">kun'yomi in teal</span>. It's not 100%, but it's right far more often than not.</p>
+    </div>
+  </section>
+
+  <!-- browser -->
+  <section class="group reveal" style="--accent:var(--aiiro)">
+    <div class="ghead"><span class="tag" style="background:var(--aiiro)">漢</span><h2 id="kjTitle">Core kanji</h2><span class="jp-sub" id="kjCount"></span></div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:6px">
+      <div class="seg" id="kjView">
+        <button data-v="core" class="active">Core set</button>
+        <button data-v="random">Random 20 from Anki</button>
+      </div>
+      <button class="btn ghost" id="kjShuffle" style="display:none">↻ New 20</button>
+      <label class="btn ghost" id="onlyKnownWrap" style="cursor:pointer;user-select:none;display:none">
+        <input type="checkbox" id="onlyKnown" style="margin-right:8px">Only kanji in my Anki deck
+      </label>
+      <span class="note" style="--accent:var(--aiiro);font-size:.85rem">Tap any card's 🔊 to hear its example word.</span>
+    </div>
+    <div id="kjBrowser"></div>
+  </section>
+
+  <!-- reading quiz -->
+  <section class="group reveal" id="quiz" style="--accent:var(--yamabuki)">
+    <div class="ghead"><span class="tag" style="background:var(--yamabuki)">試</span><h2>Reading quiz</h2><span class="jp-sub">what does it sound like?</span></div>
+    <p class="gintro">A word in kanji appears — pick how it's read. Hear the answer every time so the sound sticks. Wrong answers come back more often.</p>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px">
+      <label class="btn ghost" id="quizKnownWrap" style="cursor:pointer;user-select:none;display:none">
+        <input type="checkbox" id="quizKnown" style="margin-right:8px">Only kanji in my Anki deck
+      </label>
+    </div>
+    <div class="quiz-card" style="--accent:var(--yamabuki)">
+      <div class="quiz-bar">
+        <div class="progress"><i id="qProg" style="width:0%"></i></div>
+        <div class="score" id="qScore">0 / 0</div>
+      </div>
+      <div class="quiz-prompt">
+        <div class="label">How is this read?</div>
+        <div class="big jp" id="qWord">水</div>
+        <div class="sub" id="qMean">water</div>
+      </div>
+      <div class="opts" id="qOpts"></div>
+      <div class="feedback" id="qFeedback"></div>
+      <div style="text-align:center;margin-top:18px"><button class="btn ghost" id="qReset">Reset score</button></div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="wrap">
+  <p><span class="jp">音、聞こえた？</span> &nbsp;The fastest fix for "I can't hear kanji" is repeated exposure to the sound. Run the quiz daily and say each reading out loud as it plays — the link forms fast.</p>
+</footer>
+
+<script src="assets/audio.js"></script>
+<script src="assets/anki.js"></script>
+<script src="assets/kanji-data.js"></script>
+<script>
+  AnkiData.initPill(document.getElementById('migContainer'));
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.05});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  const CATCOLOR={'Numbers':'var(--yamabuki)','Days & Time':'var(--shu)','Nature & Place':'var(--take)','Body':'var(--murasaki)','People':'var(--asagi)','School':'var(--aiiro)','Verbs':'var(--renga)','Descriptors':'var(--ink)'};
+
+  /* ---------- browser (core / random-from-Anki views) ---------- */
+  let kjViewMode='core', randomList=null;
+
+  function randomEntries(){
+    const d=AnkiData.get(); if(!d || !d.kanjiArr.length) return [];
+    const pool=d.kanjiArr.slice();
+    for(let i=pool.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [pool[i],pool[j]]=[pool[j],pool[i]]; }
+    return pool.slice(0,20).map(ch=>{
+      const core=KANJI.list.find(x=>x.k===ch);
+      const exw=d.words.find(w=>w.w.indexOf(ch)>=0 && w.r) || d.words.find(w=>w.w.indexOf(ch)>=0);
+      return {
+        k:ch,
+        mean: core?core.mean:((exw&&exw.m)?exw.m:'—'),
+        on: core?core.on:[], kun: core?core.kun:[],
+        cat: core?core.cat:'',
+        ex: exw?{w:exw.w,r:exw.r||'',m:exw.m||'',st:exw.st||''}:(core?core.ex:{w:ch,r:'',m:''})
+      };
+    });
+  }
+
+  function buildBrowser(){
+    const d=AnkiData.get();
+    const host=document.getElementById('kjBrowser'); host.innerHTML='';
+    if(kjViewMode==='random'){
+      document.getElementById('kjTitle').textContent='Random kanji';
+      if(!d){ host.innerHTML='<p class="note" style="--accent:var(--aiiro)">Connect Anki to draw random kanji from a deck.</p>'; document.getElementById('kjCount').textContent=''; return; }
+      if(!randomList) randomList=randomEntries();
+      if(!randomList.length){ host.innerHTML='<p class="note" style="--accent:var(--aiiro)">No kanji found on the connected cards yet.</p>'; document.getElementById('kjCount').textContent=''; return; }
+      document.getElementById('kjCount').textContent=randomList.length+' of '+d.kanjiCount+' deck kanji';
+      const grid=document.createElement('div'); grid.className='grid';
+      randomList.forEach(x=>grid.appendChild(card(x,d)));
+      host.appendChild(grid);
+      return;
+    }
+    document.getElementById('kjTitle').textContent='Core kanji';
+    const onlyKnown=document.getElementById('onlyKnown').checked;
+    let shown=0;
+    KANJI.cats.forEach(cat=>{
+      let items=KANJI.list.filter(x=>x.cat===cat);
+      if(onlyKnown && d) items=items.filter(x=>d.kanji.has(x.k));
+      if(!items.length) return;
+      const lab=document.createElement('div'); lab.className='catlabel'; lab.textContent=cat;
+      host.appendChild(lab);
+      const grid=document.createElement('div'); grid.className='grid';
+      items.forEach(x=>{ grid.appendChild(card(x, d)); shown++; });
+      host.appendChild(grid);
+    });
+    document.getElementById('kjCount').textContent=shown+' kanji';
+    if(!shown){ host.innerHTML='<p class="note" style="--accent:var(--aiiro)">None of the deck\'s kanji match this set yet — uncheck the filter to see all.</p>'; }
+  }
+
+  document.getElementById('kjView').addEventListener('click',e=>{
+    const b=e.target.closest('button'); if(!b) return;
+    if(b.dataset.v==='random' && !AnkiData.connected()){ alert('Connect Anki first — the random set draws from the connected deck.'); return; }
+    [...document.getElementById('kjView').children].forEach(x=>x.classList.remove('active'));
+    b.classList.add('active'); kjViewMode=b.dataset.v;
+    if(kjViewMode==='random') randomList=randomEntries();
+    syncViewUI(); buildBrowser();
+  });
+  document.getElementById('kjShuffle').addEventListener('click',()=>{ randomList=randomEntries(); buildBrowser(); });
+  function syncViewUI(){
+    const on=AnkiData.connected();
+    document.getElementById('kjShuffle').style.display = kjViewMode==='random' ? '' : 'none';
+    document.getElementById('onlyKnownWrap').style.display = (on && kjViewMode==='core') ? '' : 'none';
+  }
+  function card(x, d){
+    const el=document.createElement('div'); el.className='kj-card';
+    el.style.setProperty('--accent', CATCOLOR[x.cat]||'var(--aiiro)');
+    const on = x.on.length? '<span class="on">音 '+x.on.join('・')+'</span>' : '';
+    const kun = x.kun.length? '<span class="kun">訓 '+x.kun.join('・')+'</span>' : '';
+    let badge='';
+    if(d){
+      if(d.kanjiKnown.has(x.k)) badge='<span class="known">✓ known</span>';
+      else if(d.kanji.has(x.k)) badge='<span class="known" style="color:var(--yamabuki);background:color-mix(in srgb,var(--yamabuki) 16%,transparent)">◐ learning</span>';
+    }
+    el.innerHTML =
+      badge+
+      '<div class="kj-top"><div class="kj-glyph jp">'+x.k+'</div>'+
+      '<div><div class="kj-mean">'+x.mean+'</div><div class="kj-read">'+on+(on&&kun?'<br>':'')+kun+'</div></div></div>'+
+      '<div class="kj-ex"><span class="w jp">'+x.ex.w+'</span><span class="r">'+x.ex.r+'</span>'+
+      '<span class="m">'+x.ex.m+'</span></div>'+
+      (x.ex.st ? '<div class="kj-sent">'+AnkiData.markSentence(x.ex.st, x.ex.m)+'</div>' : '');
+    const ex=el.querySelector('.kj-ex');
+    const btn=JPAudio.makeBtn(x.ex.r||x.ex.w,'sm'); btn.style.marginLeft='2px';
+    ex.insertBefore(btn, ex.children[2]);
+    return el;
+  }
+  document.getElementById('onlyKnown').addEventListener('change',buildBrowser);
+
+  /* ---------- reading quiz ---------- */
+  let qRight=0,qTotal=0,qCur=null;
+  const weight={}; // wrong answers weighted to recur
+  function qPool(){
+    const onlyKnown=document.getElementById('quizKnown').checked;
+    const d=AnkiData.get();
+    let arr=KANJI.list.slice();
+    if(onlyKnown && d) arr=arr.filter(x=>d.kanji.has(x.k));
+    return arr.length?arr:KANJI.list.slice();
+  }
+  function weightedPick(arr){
+    const bag=[];
+    arr.forEach(x=>{ const w=weight[x.k]||1; for(let i=0;i<w;i++) bag.push(x); });
+    return bag[Math.floor(Math.random()*bag.length)];
+  }
+  function qNext(){
+    const arr=qPool();
+    qCur=weightedPick(arr);
+    document.getElementById('qWord').textContent=qCur.ex.w;
+    document.getElementById('qMean').textContent=qCur.ex.m;
+    // distractor readings from other entries
+    const others=arr.filter(x=>x.ex.r!==qCur.ex.r);
+    const picks=[]; const used=new Set([qCur.ex.r]);
+    while(picks.length<3 && used.size<arr.length){
+      const o=others[Math.floor(Math.random()*others.length)];
+      if(o && !used.has(o.ex.r)){used.add(o.ex.r);picks.push(o.ex.r);}
+      else if(used.size>=others.length) break;
+    }
+    const opts=[qCur.ex.r,...picks].sort(()=>Math.random()-0.5);
+    const host=document.getElementById('qOpts'); host.innerHTML='';
+    opts.forEach(r=>{
+      const b=document.createElement('button'); b.className='opt jp'; b.textContent=r;
+      b.addEventListener('click',()=>qChoose(b,r)); host.appendChild(b);
+    });
+    document.getElementById('qFeedback').textContent=''; document.getElementById('qFeedback').className='feedback';
+  }
+  function qChoose(btn,r){
+    const ok=r===qCur.ex.r; qTotal++; if(ok){qRight++; weight[qCur.k]=Math.max(1,(weight[qCur.k]||1)-1);} else {weight[qCur.k]=(weight[qCur.k]||1)+2;}
+    [...document.getElementById('qOpts').children].forEach(b=>{b.disabled=true; if(b.textContent===qCur.ex.r) b.classList.add('correct');});
+    if(!ok) btn.classList.add('wrong');
+    const fb=document.getElementById('qFeedback');
+    fb.innerHTML = ok?'正解！ <span class="jp">'+qCur.ex.w+'</span> = '+qCur.ex.r
+                    : '<span class="jp">'+qCur.ex.w+'</span> = '+qCur.ex.r+' ('+qCur.ex.m+')';
+    fb.className='feedback '+(ok?'ok':'bad');
+    JPAudio.speak(qCur.ex.r);
+    document.getElementById('qScore').textContent=qRight+' / '+qTotal;
+    document.getElementById('qProg').style.width=(qTotal?Math.round(qRight/qTotal*100):0)+'%';
+    setTimeout(qNext, ok?800:1700);
+  }
+  document.getElementById('quizKnown').addEventListener('change',qNext);
+  document.getElementById('qReset').addEventListener('click',()=>{qRight=0;qTotal=0;document.getElementById('qScore').textContent='0 / 0';document.getElementById('qProg').style.width='0%';qNext();});
+
+  /* show Anki filters when connected */
+  function refreshMig(){
+    const on=AnkiData.connected();
+    randomList=null;
+    if(!on && kjViewMode==='random'){
+      kjViewMode='core';
+      [...document.getElementById('kjView').children].forEach(x=>x.classList.toggle('active',x.dataset.v==='core'));
+    }
+    document.getElementById('quizKnownWrap').style.display=on?'':'none';
+    if(!on){document.getElementById('onlyKnown').checked=false;document.getElementById('quizKnown').checked=false;}
+    syncViewUI();
+    buildBrowser();
+  }
+  AnkiData.onChange(refreshMig);
+  refreshMig(); qNext();
+</script>
+</body>
+</html>

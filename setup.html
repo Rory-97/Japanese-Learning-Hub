@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Setup — ローリーの日本語ハブ</title>
+<link rel="stylesheet" href="assets/theme.css">
+<style>
+  .step{display:flex;gap:16px;margin-bottom:18px;}
+  .step .num{flex:0 0 auto;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font-weight:800;color:#fff;background:var(--accent);box-shadow:var(--shadow);}
+  .step .st-body{flex:1;min-width:0;}
+  .step h3{font-family:"Newsreader",serif;font-weight:600;font-size:1.15rem;margin:4px 0 4px;}
+  .step p{margin:0 0 8px;font-size:.95rem;color:var(--ink-soft);}
+  pre{background:var(--ink);color:#f4f1ea;border-radius:10px;padding:14px 16px;overflow-x:auto;font-size:.84rem;line-height:1.5;margin:8px 0;}
+  pre .k{color:#7fb2e0;} pre .s{color:#c0a36e;}
+  code.inl{background:color-mix(in srgb,var(--ink) 8%,transparent);padding:1px 6px;border-radius:5px;font-size:.88em;}
+  .req{font-size:.74rem;font-weight:700;padding:2px 9px;border-radius:999px;background:color-mix(in srgb,var(--shu) 13%,transparent);color:var(--shu);}
+  .free{background:color-mix(in srgb,var(--ok) 15%,transparent);color:var(--ok);}
+  .setup-controls{display:flex;flex-wrap:wrap;align-items:center;gap:14px;margin:26px 0 6px;}
+  .setup-controls .subtabs{margin:0;}
+  .setup-controls .phone{margin-left:auto;display:flex;align-items:center;gap:8px;font-size:.85rem;color:var(--ink-soft);font-weight:700;}
+  .subtabs a{cursor:pointer;}
+  .tabpane{display:none;}
+  .tabpane.on{display:block;}
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="topnav-inner">
+    <a class="brand" href="index.html" style="gap:0"><span style="color:var(--shu)">ローリー</span><span style="color:var(--ink-soft)">の</span><span style="color:var(--aiiro)">日本語</span><span style="color:var(--take)">ハブ</span></a>
+    <a class="tab" href="index.html">Home</a>
+    <a class="tab" href="kana.html">Kana</a>    <a class="tab" href="kanji.html">Kanji</a>
+    <a class="tab" href="particles.html">Particles</a>
+    <a class="tab" href="cheatsheets.html">Cheats</a>
+    <a class="tab" href="speaking.html">Speaking</a>
+    <a class="tab" href="quizzes.html">Quizzes</a>
+    <a class="tab active" href="setup.html">Setup</a>
+    <span class="spacer"></span>
+    <span id="migContainer"></span>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="kana-ghost" aria-hidden="true">設</div>
+  <div class="wrap">
+    <p class="eyebrow">Setup</p>
+    <h1>Connecting Anki<br>and mining from native media.</h1>
+    <p class="jp-title">設定 ・ せってい</p>
+    <p class="lede"><strong>This hub reads an Anki collection and personalizes its pages around it.</strong> The features below are modular — pick whichever fit how you study. <b>Anki setup</b> is the one shared foundation; <b>video mining</b> and <b>manga mining</b> are optional add-ons that feed new cards into the same deck. Pick a phone platform to tailor the app recommendations. All of it is free software (the one exception is noted).</p>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- feature tabs + phone selector -->
+  <div class="setup-controls">
+    <div class="subtabs" id="setupTabs">
+      <a data-tab="anki" class="active">Anki setup</a>
+      <a data-tab="video">Video mining</a>
+      <a data-tab="manga">Manga mining</a>
+    </div>
+    <span class="phone">Phone:
+      <span class="seg" id="phoneSeg">
+        <button type="button" data-phone="android" class="active">Android</button>
+        <button type="button" data-phone="ios">iPhone</button>
+      </span>
+    </span>
+  </div>
+
+  <!-- ================= TAB: ANKI SETUP ================= -->
+  <div class="tabpane on" id="pane-anki">
+
+    <section class="group reveal" style="--accent:var(--take)">
+      <div class="ghead"><span class="tag" style="background:var(--take)">基</span><h2>Install Anki + AnkiConnect</h2><span class="jp-sub">the foundation — everything else plugs into this</span></div>
+      <div>
+        <div class="step" style="--accent:var(--take)"><div class="num">1</div><div class="st-body"><h3>Install Anki (desktop)</h3><p>Download from <a href="https://apps.ankiweb.net" target="_blank" rel="noopener">apps.ankiweb.net</a> and create a free AnkiWeb account — that account is what syncs the deck to a phone.</p></div></div>
+        <div class="step" style="--accent:var(--take)"><div class="num">2</div><div class="st-body"><h3>Add the AnkiConnect add-on</h3><p>In Anki: <b>Tools → Add-ons → Get Add-ons</b>, paste code <code class="inl">2055492159</code>, then restart Anki. AnkiConnect opens a small local API on <code class="inl">127.0.0.1:8765</code> that this hub (and the mining tools) read from.</p></div></div>
+      </div>
+    </section>
+
+    <section class="group reveal" style="--accent:var(--asagi)">
+      <div class="ghead"><span class="tag" style="background:var(--asagi)">繋</span><h2>Connect this hub to Anki</h2><span class="jp-sub">the exact sequence that works</span></div>
+      <div>
+        <div class="step" style="--accent:var(--asagi)"><div class="num">1</div><div class="st-body"><h3>Sync — and watch the Anki window</h3><p>With Anki open, click <b>Sync from Anki</b> on the <a href="index.html">home page</a>. The very first sync makes AnkiConnect show an <b>“Allow connection?”</b> popup — <em>inside the Anki window</em>, usually hidden behind the browser. Bring Anki to the front and click <b>Yes</b>, then sync again.</p></div></div>
+        <div class="step" style="--accent:var(--asagi)"><div class="num">2</div><div class="st-body"><h3>If the hub still can’t find AnkiConnect: the CORS fix</h3><p>A hub opened by double-clicking the file has the origin <code class="inl">null</code>, which AnkiConnect blocks by default. Open <b>Tools → Add-ons → AnkiConnect → Config</b> and make sure it reads:</p>
+          <pre>{
+  <span class="k">"webBindAddress"</span>: <span class="s">"127.0.0.1"</span>,
+  <span class="k">"webBindPort"</span>: <span class="s">"8765"</span>,
+  <span class="k">"webCorsOriginList"</span>: [<span class="s">"http://localhost"</span>, <span class="s">"null"</span>]
+}</pre>
+          <p><b>Restart Anki</b> (the config only reloads on restart), hard-reload the hub (Ctrl/Cmd+Shift+R), and sync again. This is the fix that resolves nearly every “can’t find it” case.</p></div></div>
+        <div class="step" style="--accent:var(--asagi)"><div class="num">3</div><div class="st-body"><h3>Sanity check</h3><p>With Anki open, visit <a href="http://127.0.0.1:8765" target="_blank" rel="noopener">http://127.0.0.1:8765</a> in the browser — it should say <em>“AnkiConnect v.6”</em>. If it doesn’t, AnkiConnect isn’t running and no page can reach it.</p></div></div>
+        <div class="step" style="--accent:var(--asagi)"><div class="num">4</div><div class="st-body"><h3>Optional: serve over localhost</h3><p>Running the hub from <code class="inl">http://localhost</code> instead of a double-clicked file sidesteps every <code class="inl">file://</code> quirk: from the hub folder run <code class="inl">python -m http.server 8000</code> (or <code class="inl">npx serve</code>), open <code class="inl">http://localhost:8000</code>, and add <code class="inl">"http://localhost:8000"</code> to <code class="inl">webCorsOriginList</code>.</p></div></div>
+      </div>
+      <p class="note" style="--accent:var(--asagi)">After a successful sync the hub tags every card as <b style="color:var(--take)">known</b> (mature — interval of 21+ days) or <b style="color:var(--yamabuki)">learning</b>, and every page that adapts to the deck updates automatically. Re-sync any time. The hub also accepts a plain Anki export (<b>File → Export → Notes in Plain Text</b>) via the Connect Anki pill — no live sync required at all.</p>
+    </section>
+
+    <section class="group reveal" style="--accent:var(--yamabuki)">
+      <div class="ghead"><span class="tag" style="background:var(--yamabuki)">携</span><h2>Review on your phone</h2><span class="jp-sub">outside the hub — Anki syncs it back</span></div>
+      <div>
+        <div class="step" style="--accent:var(--yamabuki)" data-phone="android"><div class="num">1</div><div class="st-body"><h3>AnkiDroid <span class="req free">free</span></h3><p>Install <a href="https://play.google.com/store/apps/details?id=com.ichi2.anki" target="_blank" rel="noopener">AnkiDroid</a> from the Play Store and log into the same AnkiWeb account — the whole deck syncs down. Do daily reviews anywhere; the next AnkiWeb sync carries the progress back to desktop, and the hub picks it up on its next <b>Sync from Anki</b>.</p></div></div>
+        <div class="step" style="--accent:var(--yamabuki)" data-phone="ios"><div class="num">1</div><div class="st-body"><h3>AnkiMobile <span class="req">one-time paid</span></h3><p>Install <a href="https://apps.apple.com/app/ankimobile-flashcards/id373493387" target="_blank" rel="noopener">AnkiMobile</a> from the App Store (a one-time purchase that funds Anki’s development) and log into the same AnkiWeb account — the whole deck syncs down. Do daily reviews anywhere; the next AnkiWeb sync carries the progress back to desktop, and the hub picks it up on its next <b>Sync from Anki</b>.</p></div></div>
+      </div>
+      <p class="note" style="--accent:var(--yamabuki)">The hub itself is desktop-only — phone reviews happen in the Anki app, and AnkiWeb sync is the bridge that keeps everything in one collection.</p>
+    </section>
+
+  </div>
+
+  <!-- ================= TAB: VIDEO MINING ================= -->
+  <div class="tabpane" id="pane-video">
+
+    <section class="group reveal" style="--accent:var(--shu)">
+      <div class="ghead"><span class="tag" style="background:var(--shu)">映</span><h2>Mine vocabulary from video</h2><span class="jp-sub">Crunchyroll &amp; YouTube → Anki · optional add-on</span></div>
+      <p class="gintro">Turn lines from streaming video into Anki cards in two keystrokes. Requires the <b>Anki setup</b> tab first — asbplayer writes cards through the same AnkiConnect.</p>
+      <div>
+        <div class="step" style="--accent:var(--shu)"><div class="num">1</div><div class="st-body"><h3>Install asbplayer + Yomitan</h3><p>Add <a href="https://github.com/killergerbah/asbplayer" target="_blank" rel="noopener">asbplayer</a> and <a href="https://github.com/yomidevs/yomitan" target="_blank" rel="noopener">Yomitan</a> to the browser (Chrome/Edge). In Yomitan, import a dictionary (JMdict is the standard choice). In asbplayer settings, point it at the target Anki deck and note type.</p></div></div>
+        <div class="step" style="--accent:var(--shu)"><div class="num">2</div><div class="st-body"><h3>Crunchyroll: bring Japanese subtitles</h3><p>Crunchyroll only ships <em>translated</em> subtitles, so mining needs a matching Japanese <code class="inl">.srt/.ass</code> file from <a href="https://jimaku.cc" target="_blank" rel="noopener">jimaku.cc</a>. Play the episode, <b>drag the subtitle file onto the video</b>, and asbplayer overlays it. If timing drifts, nudge it with <code class="inl">A</code>/<code class="inl">D</code>.</p></div></div>
+        <div class="step" style="--accent:var(--shu)"><div class="num">3</div><div class="st-body"><h3>YouTube: usually automatic</h3><p>Videos with Japanese captions work directly. For videos without captions, drag in a subtitle file the same way.</p></div></div>
+        <div class="step" style="--accent:var(--shu)"><div class="num">4</div><div class="st-body"><h3>Make the card</h3><p>When a worthwhile line appears, press <code class="inl">Ctrl + Shift + X</code> — asbplayer captures the sentence, audio, and a screenshot. Yomitan fills in the word, reading, and meaning. Export, and the card is in Anki; the next hub sync picks it up.</p></div></div>
+      </div>
+      <p class="note" style="--accent:var(--shu)">🎯 The sweet spot is “i+1” sentences — every word known except one. A handful of good cards per episode beats dozens of half-understood ones.</p>
+      <p class="note" style="--accent:var(--shu);margin-top:10px" data-phone="android"><b>On Android:</b> <a href="https://github.com/arianneorpilla/jidoujisho" target="_blank" rel="noopener">jidoujisho</a> can watch and mine video on the phone itself, exporting cards to AnkiDroid. Desktop mining is still the smoother workflow.</p>
+      <p class="note" style="--accent:var(--shu);margin-top:10px" data-phone="ios"><b>On iPhone:</b> there’s no solid on-device video-mining tool — mine on desktop and use AnkiMobile for reviews; AnkiWeb sync keeps the deck identical everywhere.</p>
+    </section>
+
+  </div>
+
+  <!-- ================= TAB: MANGA MINING ================= -->
+  <div class="tabpane" id="pane-manga">
+
+    <section class="group reveal" style="--accent:var(--murasaki)">
+      <div class="ghead"><span class="tag" style="background:var(--murasaki)">漫</span><h2>Mine vocabulary from manga</h2><span class="jp-sub">OCR turns pages into text · optional add-on</span></div>
+      <p class="gintro">Manga text is baked into the images, so an OCR step replaces asbplayer — the dictionary and Anki half of the workflow stays identical. This only works with <b>Japanese-language editions</b> (raws), not translated releases. Requires the <b>Anki setup</b> tab first.</p>
+      <div>
+        <div class="step" style="--accent:var(--murasaki)"><div class="num">1</div><div class="st-body"><h3>Desktop: mokuro</h3><p>Run <a href="https://github.com/kha-white/mokuro" target="_blank" rel="noopener">mokuro</a> once over a volume — it OCRs every page into a <code class="inl">.mokuro</code> file. Open that in the <a href="https://reader.mokuro.app/" target="_blank" rel="noopener">mokuro web reader</a>: the text in the panels becomes selectable, Yomitan pops up definitions on hover, and mining to Anki works exactly like video.</p></div></div>
+        <div class="step" style="--accent:var(--murasaki)" data-phone="android"><div class="num">2</div><div class="st-body"><h3>Android: Chimahon</h3><p><a href="https://github.com/sohilsayed/chimahon" target="_blank" rel="noopener">Chimahon</a> is a Mihon/Komikku-lineage manga reader with built-in dictionary lookup, mokuro support, and one-tap AnkiDroid card creation — reading and mining in one app. (Plain Komikku has no dictionary/OCR/mining; Chimahon is the same reading experience with those added.)</p></div></div>
+        <div class="step" style="--accent:var(--murasaki)" data-phone="ios"><div class="num">2</div><div class="st-body"><h3>iPhone: read there, mine on desktop</h3><p>iOS has no one-tap equivalent of Chimahon. The <a href="https://reader.mokuro.app/" target="_blank" rel="noopener">mokuro web reader</a> works in Safari for reading OCR’d volumes, and <a href="https://reader.manabi.io" target="_blank" rel="noopener">Manabi Reader</a> is a native iOS reading app with dictionary lookups and Anki export for web/text content. For manga specifically, the reliable flow is: read anywhere, mine on desktop.</p></div></div>
+      </div>
+    </section>
+
+  </div>
+
+  <section class="group reveal" style="scroll-margin-top:64px">
+    <div class="cheat">
+      <h2>The daily loop</h2>
+      <p class="sub">how the pieces fit together</p>
+      <table>
+        <tr><td class="jp" style="font-family:'Zen Old Mincho',serif;font-weight:700;width:1%;white-space:nowrap;padding-right:16px;color:#8aa57c">見る・読む</td><td>Watch (asbplayer + Japanese subs) or read (mokuro / a manga reader) native material.</td></tr>
+        <tr><td class="jp" style="font-family:'Zen Old Mincho',serif;font-weight:700;color:#e0734f">採る</td><td>Mine a handful of i+1 sentences into Anki.</td></tr>
+        <tr><td class="jp" style="font-family:'Zen Old Mincho',serif;font-weight:700;color:#a981bf">覚える</td><td>Review the deck daily — the Anki phone app syncs it all back via AnkiWeb.</td></tr>
+        <tr><td class="jp" style="font-family:'Zen Old Mincho',serif;font-weight:700;color:#d6a23e">試す</td><td>Sync the hub; it adapts its kanji, quizzes, and stats to the deck.</td></tr>
+      </table>
+    </div>
+  </section>
+
+</main>
+
+<footer class="wrap">
+  <p><span class="jp">さあ、始めよう！</span> &nbsp;Set up Anki + AnkiConnect once, add whichever mining tools fit, and the rest is watching and reading things worth enjoying — the hub turns that into review.</p>
+</footer>
+
+<script src="assets/audio.js"></script>
+<script src="assets/anki.js"></script>
+<script>
+  AnkiData.initPill(document.getElementById('migContainer'));
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.05});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  /* ---------- feature tabs ---------- */
+  const TAB_KEY='jhub.setupTab';
+  function showTab(name){
+    document.querySelectorAll('#setupTabs a').forEach(a=>a.classList.toggle('active',a.dataset.tab===name));
+    document.querySelectorAll('.tabpane').forEach(p=>p.classList.toggle('on',p.id==='pane-'+name));
+    // panes start hidden, so reveal animations inside them need a nudge
+    document.querySelectorAll('#pane-'+name+' .reveal').forEach(el=>el.classList.add('in'));
+    try{localStorage.setItem(TAB_KEY,name);}catch(e){}
+  }
+  document.getElementById('setupTabs').addEventListener('click',e=>{
+    const a=e.target.closest('a[data-tab]'); if(a) showTab(a.dataset.tab);
+  });
+
+  /* ---------- phone selector ---------- */
+  const PHONE_KEY='jhub.phone';
+  function showPhone(p){
+    document.querySelectorAll('#phoneSeg button').forEach(b=>b.classList.toggle('active',b.dataset.phone===p));
+    document.querySelectorAll('[data-phone]').forEach(el=>{
+      if(el.closest('#phoneSeg')) return;
+      el.style.display = el.dataset.phone===p ? '' : 'none';
+    });
+    try{localStorage.setItem(PHONE_KEY,p);}catch(e){}
+  }
+  document.getElementById('phoneSeg').addEventListener('click',e=>{
+    const b=e.target.closest('button[data-phone]'); if(b) showPhone(b.dataset.phone);
+  });
+
+  let savedTab='anki', savedPhone='android';
+  try{ savedTab=localStorage.getItem(TAB_KEY)||'anki'; savedPhone=localStorage.getItem(PHONE_KEY)||'android'; }catch(e){}
+  showTab(savedTab); showPhone(savedPhone);
+</script>
+</body>
+</html>

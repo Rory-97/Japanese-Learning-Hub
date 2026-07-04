@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cheat Sheets — 早見表 — ローリーの日本語ハブ</title>
+<link rel="stylesheet" href="assets/theme.css">
+<style>
+  .ctable{width:100%;border-collapse:collapse;font-size:.93rem;margin:2px 0;}
+  .ctable th{text-align:left;font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);font-weight:700;padding:6px 10px;border-bottom:2px solid var(--line);}
+  .ctable td{padding:7px 10px;border-bottom:1px solid var(--line);vertical-align:top;}
+  .ctable td.jp,.ctable td .say{font-family:"Noto Sans JP",sans-serif;}
+  .ctable td.jp{font-size:1.04rem;white-space:nowrap;}
+  .ctable td.rm{color:var(--ink-soft);font-size:.84rem;}
+  .ctable tr:last-child td{border-bottom:none;}
+  .sheet{background:var(--paper-2);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);border-left:4px solid var(--accent);padding:6px 16px;margin-bottom:14px;overflow-x:auto;}
+  .sheet h4{font-family:"Newsreader",serif;font-weight:600;font-size:1.05rem;margin:12px 4px 2px;}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  @media(max-width:640px){.two{grid-template-columns:1fr;}}
+  .legend2{position:sticky;top:43px;z-index:40;background:rgba(244,241,234,.9);backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid var(--line);padding:9px 0;}
+  .legend2 .inner{display:flex;gap:7px;overflow-x:auto;scrollbar-width:none;max-width:920px;margin:0 auto;padding:0 20px;}
+  .legend2 .inner::-webkit-scrollbar{display:none}
+  .legend2 a{flex:0 0 auto;text-decoration:none;color:var(--ink);font-size:.8rem;font-weight:600;padding:5px 11px;border-radius:999px;border:1px solid var(--line);background:var(--paper-2);white-space:nowrap;}
+  .say.ank-known{background:color-mix(in srgb,var(--ok) 16%,transparent);border-radius:4px;box-shadow:inset 0 -2px 0 var(--ok);}
+  .say.ank-learning{background:color-mix(in srgb,var(--yamabuki) 20%,transparent);border-radius:4px;box-shadow:inset 0 -2px 0 var(--yamabuki);}
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="topnav-inner">
+    <a class="brand" href="index.html" style="gap:0"><span style="color:var(--shu)">ローリー</span><span style="color:var(--ink-soft)">の</span><span style="color:var(--aiiro)">日本語</span><span style="color:var(--take)">ハブ</span></a>
+    <a class="tab" href="index.html">Home</a>
+    <a class="tab" href="kana.html">Kana</a>    <a class="tab" href="kanji.html">Kanji</a>
+    <a class="tab" href="particles.html">Particles</a>
+    <a class="tab active" href="cheatsheets.html">Cheats</a>
+    <a class="tab" href="speaking.html">Speaking</a>
+    <a class="tab" href="quizzes.html">Quizzes</a>
+    <a class="tab" href="setup.html">Setup</a>
+    <span class="spacer"></span>
+    <span id="migContainer"></span>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="kana-ghost" aria-hidden="true">表</div>
+  <div class="wrap">
+    <p class="eyebrow">Reference tables</p>
+    <h1>The closed systems of Japanese,<br>on <em>one</em> page.</h1>
+    <p class="jp-title">早見表 ・ はやみひょう</p>
+    <p class="lede"><strong>Japanese grammar is built on a handful of fixed, memorisable systems — and these are their tables.</strong> Numbers and counters, time and dates, question words, the こそあど demonstratives, and the complete conjugation patterns for verbs, adjectives, and です. Tap any <span class="say" data-jp="日本語">Japanese</span> term to hear it.</p>
+  </div>
+</header>
+
+<nav class="legend2">
+  <div class="inner">
+    <a href="#numbers">Numbers</a>
+    <a href="#counters">Counters</a>
+    <a href="#time">Time &amp; dates</a>
+    <a href="#questions">Question words</a>
+    <a href="#kosoado">こそあど</a>
+    <a href="#verbs">Verbs</a>
+    <a href="#adjectives">Adjectives</a>
+    <a href="#copula">です / だ</a>
+    <a href="#pronouns">Pronouns</a>
+    <a href="#family">Family</a>
+    <a href="#colors">Colors</a>
+    <a href="#adverbs">Adverbs</a>
+  </div>
+</nav>
+
+<main class="wrap">
+
+  <p class="note" id="deckNote" style="--accent:var(--take);display:none;margin-top:26px"></p>
+
+  <!-- NUMBERS -->
+  <section class="group reveal" id="numbers" style="--accent:var(--yamabuki);scroll-margin-top:96px;padding-top:30px">
+    <div class="ghead"><span class="tag" style="background:var(--yamabuki)">数</span><h2>Numbers</h2><span class="jp-sub">数字 — sūji</span></div>
+    <div class="two">
+      <div class="sheet" style="--accent:var(--yamabuki)">
+        <h4>1–10 (two reading sets)</h4>
+        <table class="ctable">
+          <tr><th>#</th><th>Sino (kango)</th><th>Native (wago)</th></tr>
+          <tr><td>1</td><td class="jp"><span class="say" data-jp="いち">いち</span></td><td class="jp"><span class="say" data-jp="ひとつ">ひとつ</span></td></tr>
+          <tr><td>2</td><td class="jp"><span class="say" data-jp="に">に</span></td><td class="jp"><span class="say" data-jp="ふたつ">ふたつ</span></td></tr>
+          <tr><td>3</td><td class="jp"><span class="say" data-jp="さん">さん</span></td><td class="jp"><span class="say" data-jp="みっつ">みっつ</span></td></tr>
+          <tr><td>4</td><td class="jp"><span class="say" data-jp="よん">よん / し</span></td><td class="jp"><span class="say" data-jp="よっつ">よっつ</span></td></tr>
+          <tr><td>5</td><td class="jp"><span class="say" data-jp="ご">ご</span></td><td class="jp"><span class="say" data-jp="いつつ">いつつ</span></td></tr>
+          <tr><td>6</td><td class="jp"><span class="say" data-jp="ろく">ろく</span></td><td class="jp"><span class="say" data-jp="むっつ">むっつ</span></td></tr>
+          <tr><td>7</td><td class="jp"><span class="say" data-jp="なな">なな / しち</span></td><td class="jp"><span class="say" data-jp="ななつ">ななつ</span></td></tr>
+          <tr><td>8</td><td class="jp"><span class="say" data-jp="はち">はち</span></td><td class="jp"><span class="say" data-jp="やっつ">やっつ</span></td></tr>
+          <tr><td>9</td><td class="jp"><span class="say" data-jp="きゅう">きゅう / く</span></td><td class="jp"><span class="say" data-jp="ここのつ">ここのつ</span></td></tr>
+          <tr><td>10</td><td class="jp"><span class="say" data-jp="じゅう">じゅう</span></td><td class="jp"><span class="say" data-jp="とお">とお</span></td></tr>
+        </table>
+      </div>
+      <div class="sheet" style="--accent:var(--yamabuki)">
+        <h4>Tens, hundreds, big</h4>
+        <table class="ctable">
+          <tr><th>Value</th><th>Japanese</th></tr>
+          <tr><td>0</td><td class="jp"><span class="say" data-jp="ゼロ">ゼロ / れい</span></td></tr>
+          <tr><td>100</td><td class="jp"><span class="say" data-jp="ひゃく">ひゃく</span></td></tr>
+          <tr><td>300</td><td class="jp"><span class="say" data-jp="さんびゃく">さんびゃく ⚠</span></td></tr>
+          <tr><td>600</td><td class="jp"><span class="say" data-jp="ろっぴゃく">ろっぴゃく ⚠</span></td></tr>
+          <tr><td>800</td><td class="jp"><span class="say" data-jp="はっぴゃく">はっぴゃく ⚠</span></td></tr>
+          <tr><td>1,000</td><td class="jp"><span class="say" data-jp="せん">せん</span></td></tr>
+          <tr><td>10,000</td><td class="jp"><span class="say" data-jp="いちまん">いちまん</span></td></tr>
+          <tr><td>100,000,000</td><td class="jp"><span class="say" data-jp="いちおく">いちおく (億)</span></td></tr>
+        </table>
+        <p class="csub" style="padding:0 10px 8px">⚠ Sound changes — Japanese counts in units of <b>10,000</b> (万), so 50,000 = 五万.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- COUNTERS -->
+  <section class="group reveal" id="counters" style="--accent:var(--renga);scroll-margin-top:96px">
+    <div class="ghead"><span class="tag" style="background:var(--renga)">個</span><h2>Counters</h2><span class="jp-sub">助数詞 — josūshi</span></div>
+    <p class="gintro">Japanese can't just say "three dogs" — you pick a counter that matches the <em>kind</em> of thing. The big ones:</p>
+    <div class="sheet" style="--accent:var(--renga)">
+      <table class="ctable">
+        <tr><th>Counter</th><th>For</th><th>Watch out</th></tr>
+        <tr><td class="jp"><span class="say" data-jp="つ">〜つ</span></td><td>general objects (1–10)</td><td class="rm">ひとつ, ふたつ… とお</td></tr>
+        <tr><td class="jp"><span class="say" data-jp="個">〜こ (個)</span></td><td>small / round objects</td><td class="rm">いっこ, ろっこ, はっこ</td></tr>
+        <tr><td class="jp"><span class="say" data-jp="人">〜にん (人)</span></td><td>people</td><td class="rm">1 ひとり, 2 ふたり, then 〜にん</td></tr>
+        <tr><td class="jp"><span class="say" data-jp="本">〜ほん (本)</span></td><td>long, cylindrical things</td><td class="rm">いっぽん, さんぼん, ろっぽん</td></tr>
+        <tr><td class="jp"><span class="say" data-jp="枚">〜まい (枚)</span></td><td>flat, thin things (paper)</td><td class="rm">regular: いちまい…</td></tr>
+        <tr><td class="jp"><span class="say" data-jp="匹">〜ひき (匹)</span></td><td>small animals</td><td class="rm">いっぴき, さんびき, ろっぴき</td></tr>
+        <tr><td class="jp"><span class="say" data-jp="台">〜だい (台)</span></td><td>machines, vehicles</td><td class="rm">regular</td></tr>
+        <tr><td class="jp"><span class="say" data-jp="冊">〜さつ (冊)</span></td><td>books, bound volumes</td><td class="rm">いっさつ, はっさつ</td></tr>
+        <tr><td class="jp"><span class="say" data-jp="杯">〜はい (杯)</span></td><td>cupfuls / glassfuls</td><td class="rm">いっぱい, さんばい, ろっぱい</td></tr>
+        <tr><td class="jp"><span class="say" data-jp="回">〜かい (回)</span></td><td>times / occurrences</td><td class="rm">いっかい, ろっかい</td></tr>
+        <tr><td class="jp"><span class="say" data-jp="歳">〜さい (歳)</span></td><td>age (years old)</td><td class="rm">いっさい, はっさい, 20 = はたち</td></tr>
+      </table>
+    </div>
+    <p class="note" style="--accent:var(--renga)">💡 When in doubt for objects, the native <b>〜つ</b> set (ひとつ, ふたつ…) works for most things up to ten.</p>
+  </section>
+
+  <!-- TIME -->
+  <section class="group reveal" id="time" style="--accent:var(--shu);scroll-margin-top:96px">
+    <div class="ghead"><span class="tag" style="background:var(--shu)">時</span><h2>Time &amp; dates</h2><span class="jp-sub">時・日・曜日</span></div>
+    <div class="two">
+      <div class="sheet" style="--accent:var(--shu)">
+        <h4>Days of the week</h4>
+        <table class="ctable">
+          <tr><td class="jp"><span class="say" data-jp="げつようび">月曜日</span></td><td class="rm">getsuyōbi — Mon</td></tr>
+          <tr><td class="jp"><span class="say" data-jp="かようび">火曜日</span></td><td class="rm">kayōbi — Tue</td></tr>
+          <tr><td class="jp"><span class="say" data-jp="すいようび">水曜日</span></td><td class="rm">suiyōbi — Wed</td></tr>
+          <tr><td class="jp"><span class="say" data-jp="もくようび">木曜日</span></td><td class="rm">mokuyōbi — Thu</td></tr>
+          <tr><td class="jp"><span class="say" data-jp="きんようび">金曜日</span></td><td class="rm">kinyōbi — Fri</td></tr>
+          <tr><td class="jp"><span class="say" data-jp="どようび">土曜日</span></td><td class="rm">doyōbi — Sat</td></tr>
+          <tr><td class="jp"><span class="say" data-jp="にちようび">日曜日</span></td><td class="rm">nichiyōbi — Sun</td></tr>
+        </table>
+      </div>
+      <div class="sheet" style="--accent:var(--shu)">
+        <h4>Relative time</h4>
+        <table class="ctable">
+          <tr><td class="jp"><span class="say" data-jp="きのう">昨日</span></td><td class="rm">kinō — yesterday</td></tr>
+          <tr><td class="jp"><span class="say" data-jp="きょう">今日</span></td><td class="rm">kyō — today</td></tr>
+          <tr><td class="jp"><span class="say" data-jp="あした">明日</span></td><td class="rm">ashita — tomorrow</td></tr>
+          <tr><td class="jp"><span class="say" data-jp="けさ">今朝</span></td><td class="rm">kesa — this morning</td></tr>
+          <tr><td class="jp"><span class="say" data-jp="こんばん">今晩</span></td><td class="rm">konban — tonight</td></tr>
+          <tr><td class="jp"><span class="say" data-jp="まいにち">毎日</span></td><td class="rm">mainichi — every day</td></tr>
+          <tr><td class="jp"><span class="say" data-jp="せんしゅう">先週</span></td><td class="rm">senshū — last week</td></tr>
+          <tr><td class="jp"><span class="say" data-jp="らいしゅう">来週</span></td><td class="rm">raishū — next week</td></tr>
+        </table>
+      </div>
+    </div>
+    <div class="two">
+      <div class="sheet" style="--accent:var(--shu)">
+        <h4>Telling the hour — 〜時</h4>
+        <table class="ctable">
+          <tr><th>Regular</th><th>Irregular ⚠</th></tr>
+          <tr><td class="jp"><span class="say" data-jp="いちじ">1 いちじ</span></td><td class="jp"><span class="say" data-jp="よじ">4 よじ</span></td></tr>
+          <tr><td class="jp"><span class="say" data-jp="にじ">2 にじ</span></td><td class="jp"><span class="say" data-jp="しちじ">7 しちじ</span></td></tr>
+          <tr><td class="jp"><span class="say" data-jp="ごじ">5 ごじ</span></td><td class="jp"><span class="say" data-jp="くじ">9 くじ</span></td></tr>
+          <tr><td class="jp"><span class="say" data-jp="はん">半</span></td><td class="rm">han = half past</td></tr>
+        </table>
+      </div>
+      <div class="sheet" style="--accent:var(--shu)">
+        <h4>Minutes — 〜分 (lots of sound shifts)</h4>
+        <table class="ctable">
+          <tr><td class="jp"><span class="say" data-jp="いっぷん">1 いっぷん</span></td><td class="jp"><span class="say" data-jp="ろっぷん">6 ろっぷん</span></td></tr>
+          <tr><td class="jp"><span class="say" data-jp="にふん">2 にふん</span></td><td class="jp"><span class="say" data-jp="ななふん">7 ななふん</span></td></tr>
+          <tr><td class="jp"><span class="say" data-jp="さんぷん">3 さんぷん</span></td><td class="jp"><span class="say" data-jp="はっぷん">8 はっぷん</span></td></tr>
+          <tr><td class="jp"><span class="say" data-jp="よんぷん">4 よんぷん</span></td><td class="jp"><span class="say" data-jp="きゅうふん">9 きゅうふん</span></td></tr>
+          <tr><td class="jp"><span class="say" data-jp="ごふん">5 ごふん</span></td><td class="jp"><span class="say" data-jp="じゅっぷん">10 じゅっぷん</span></td></tr>
+        </table>
+      </div>
+    </div>
+    <p class="note" style="--accent:var(--shu)">📅 <b>Days of the month</b> are famously irregular for 1–10: ついたち, ふつか, みっか, よっか, いつか, むいか, なのか, ようか, ここのか, とおか. Also 14 じゅうよっか, 20 はつか, 24 にじゅうよっか.</p>
+  </section>
+
+  <!-- QUESTION WORDS -->
+  <section class="group reveal" id="questions" style="--accent:var(--aiiro);scroll-margin-top:96px">
+    <div class="ghead"><span class="tag" style="background:var(--aiiro)">問</span><h2>Question words</h2><span class="jp-sub">疑問詞 — gimonshi</span></div>
+    <div class="sheet" style="--accent:var(--aiiro)">
+      <table class="ctable">
+        <tr><td class="jp"><span class="say" data-jp="なに">何 (なに/なん)</span></td><td class="rm">what</td><td class="jp"><span class="say" data-jp="だれ">誰 (だれ)</span></td><td class="rm">who</td></tr>
+        <tr><td class="jp"><span class="say" data-jp="どこ">どこ</span></td><td class="rm">where</td><td class="jp"><span class="say" data-jp="いつ">いつ</span></td><td class="rm">when</td></tr>
+        <tr><td class="jp"><span class="say" data-jp="どうして">どうして</span></td><td class="rm">why</td><td class="jp"><span class="say" data-jp="なぜ">なぜ</span></td><td class="rm">why (formal)</td></tr>
+        <tr><td class="jp"><span class="say" data-jp="どう">どう</span></td><td class="rm">how</td><td class="jp"><span class="say" data-jp="どれ">どれ</span></td><td class="rm">which one</td></tr>
+        <tr><td class="jp"><span class="say" data-jp="いくら">いくら</span></td><td class="rm">how much (cost)</td><td class="jp"><span class="say" data-jp="いくつ">いくつ</span></td><td class="rm">how many / age</td></tr>
+        <tr><td class="jp"><span class="say" data-jp="どんな">どんな</span></td><td class="rm">what kind of</td><td class="jp"><span class="say" data-jp="どのくらい">どのくらい</span></td><td class="rm">how long / much</td></tr>
+      </table>
+    </div>
+    <p class="note" style="--accent:var(--aiiro)">⚡ Question words take the particle <b>が</b>, not は — and the answer does too. <span class="say" data-jp="だれが来ましたか">誰が来ましたか？</span></p>
+  </section>
+
+  <!-- KOSOADO -->
+  <section class="group reveal" id="kosoado" style="--accent:var(--asagi);scroll-margin-top:96px">
+    <div class="ghead"><span class="tag" style="background:var(--asagi)">こ</span><h2>こそあど words</h2><span class="jp-sub">this · that · that over there · which</span></div>
+    <p class="gintro">A beautifully regular system: <b>こ</b> = near me, <b>そ</b> = near you, <b>あ</b> = far from both, <b>ど</b> = question. Learn the pattern once, get five sets free.</p>
+    <div class="sheet" style="--accent:var(--asagi)">
+      <table class="ctable">
+        <tr><th>Meaning</th><th>こ (near me)</th><th>そ (near you)</th><th>あ (over there)</th><th>ど (which?)</th></tr>
+        <tr><td>thing</td><td class="jp"><span class="say" data-jp="これ">これ</span></td><td class="jp"><span class="say" data-jp="それ">それ</span></td><td class="jp"><span class="say" data-jp="あれ">あれ</span></td><td class="jp"><span class="say" data-jp="どれ">どれ</span></td></tr>
+        <tr><td>+ noun</td><td class="jp"><span class="say" data-jp="この">この</span></td><td class="jp"><span class="say" data-jp="その">その</span></td><td class="jp"><span class="say" data-jp="あの">あの</span></td><td class="jp"><span class="say" data-jp="どの">どの</span></td></tr>
+        <tr><td>place</td><td class="jp"><span class="say" data-jp="ここ">ここ</span></td><td class="jp"><span class="say" data-jp="そこ">そこ</span></td><td class="jp"><span class="say" data-jp="あそこ">あそこ</span></td><td class="jp"><span class="say" data-jp="どこ">どこ</span></td></tr>
+        <tr><td>direction (polite)</td><td class="jp"><span class="say" data-jp="こちら">こちら</span></td><td class="jp"><span class="say" data-jp="そちら">そちら</span></td><td class="jp"><span class="say" data-jp="あちら">あちら</span></td><td class="jp"><span class="say" data-jp="どちら">どちら</span></td></tr>
+        <tr><td>kind of</td><td class="jp"><span class="say" data-jp="こんな">こんな</span></td><td class="jp"><span class="say" data-jp="そんな">そんな</span></td><td class="jp"><span class="say" data-jp="あんな">あんな</span></td><td class="jp"><span class="say" data-jp="どんな">どんな</span></td></tr>
+        <tr><td>manner</td><td class="jp"><span class="say" data-jp="こう">こう</span></td><td class="jp"><span class="say" data-jp="そう">そう</span></td><td class="jp"><span class="say" data-jp="ああ">ああ</span></td><td class="jp"><span class="say" data-jp="どう">どう</span></td></tr>
+      </table>
+    </div>
+  </section>
+
+  <!-- VERBS -->
+  <section class="group reveal" id="verbs" style="--accent:var(--take);scroll-margin-top:96px">
+    <div class="ghead"><span class="tag" style="background:var(--take)">動</span><h2>Verb conjugation</h2><span class="jp-sub">動詞 — dōshi</span></div>
+    <p class="gintro">Three groups. <b>Group 2</b> (る-verbs): drop る, add ending. <b>Group 1</b> (う-verbs): change the final u-sound. Plus two irregulars, する and 来る.</p>
+    <div class="sheet" style="--accent:var(--take)">
+      <table class="ctable">
+        <tr><th>Form</th><th>Group 2 — 食べる</th><th>Group 1 — 飲む</th><th>する</th><th>来る</th></tr>
+        <tr><td>dictionary</td><td class="jp"><span class="say" data-jp="たべる">食べる</span></td><td class="jp"><span class="say" data-jp="のむ">飲む</span></td><td class="jp"><span class="say" data-jp="する">する</span></td><td class="jp"><span class="say" data-jp="くる">来る</span></td></tr>
+        <tr><td>polite (〜ます)</td><td class="jp"><span class="say" data-jp="たべます">食べます</span></td><td class="jp"><span class="say" data-jp="のみます">飲みます</span></td><td class="jp"><span class="say" data-jp="します">します</span></td><td class="jp"><span class="say" data-jp="きます">来ます</span></td></tr>
+        <tr><td>negative (〜ない)</td><td class="jp"><span class="say" data-jp="たべない">食べない</span></td><td class="jp"><span class="say" data-jp="のまない">飲まない</span></td><td class="jp"><span class="say" data-jp="しない">しない</span></td><td class="jp"><span class="say" data-jp="こない">来ない</span></td></tr>
+        <tr><td>te-form</td><td class="jp"><span class="say" data-jp="たべて">食べて</span></td><td class="jp"><span class="say" data-jp="のんで">飲んで</span></td><td class="jp"><span class="say" data-jp="して">して</span></td><td class="jp"><span class="say" data-jp="きて">来て</span></td></tr>
+        <tr><td>past (〜た)</td><td class="jp"><span class="say" data-jp="たべた">食べた</span></td><td class="jp"><span class="say" data-jp="のんだ">飲んだ</span></td><td class="jp"><span class="say" data-jp="した">した</span></td><td class="jp"><span class="say" data-jp="きた">来た</span></td></tr>
+        <tr><td>potential (can)</td><td class="jp"><span class="say" data-jp="たべられる">食べられる</span></td><td class="jp"><span class="say" data-jp="のめる">飲める</span></td><td class="jp"><span class="say" data-jp="できる">できる</span></td><td class="jp"><span class="say" data-jp="こられる">来られる</span></td></tr>
+        <tr><td>volitional (let's)</td><td class="jp"><span class="say" data-jp="たべよう">食べよう</span></td><td class="jp"><span class="say" data-jp="のもう">飲もう</span></td><td class="jp"><span class="say" data-jp="しよう">しよう</span></td><td class="jp"><span class="say" data-jp="こよう">来よう</span></td></tr>
+      </table>
+    </div>
+    <div class="sheet" style="--accent:var(--take)">
+      <h4>The te-form rule (Group 1 endings)</h4>
+      <table class="ctable">
+        <tr><td class="jp">う・つ・る</td><td class="rm">→ って (買う→買って)</td><td class="jp">ぬ・ぶ・む</td><td class="rm">→ んで (飲む→飲んで)</td></tr>
+        <tr><td class="jp">く</td><td class="rm">→ いて (書く→書いて)</td><td class="jp">ぐ</td><td class="rm">→ いで (泳ぐ→泳いで)</td></tr>
+        <tr><td class="jp">す</td><td class="rm">→ して (話す→話して)</td><td class="jp">行く</td><td class="rm">→ 行って (exception!)</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <!-- ADJECTIVES -->
+  <section class="group reveal" id="adjectives" style="--accent:var(--murasaki);scroll-margin-top:96px">
+    <div class="ghead"><span class="tag" style="background:var(--murasaki)">形</span><h2>Adjectives</h2><span class="jp-sub">い-adjectives vs な-adjectives</span></div>
+    <div class="two">
+      <div class="sheet" style="--accent:var(--murasaki)">
+        <h4>い-adjective — 高い (expensive)</h4>
+        <table class="ctable">
+          <tr><td>present</td><td class="jp"><span class="say" data-jp="たかい">高い</span></td></tr>
+          <tr><td>past</td><td class="jp"><span class="say" data-jp="たかかった">高かった</span></td></tr>
+          <tr><td>negative</td><td class="jp"><span class="say" data-jp="たかくない">高くない</span></td></tr>
+          <tr><td>past negative</td><td class="jp"><span class="say" data-jp="たかくなかった">高くなかった</span></td></tr>
+          <tr><td>adverb</td><td class="jp"><span class="say" data-jp="たかく">高く</span></td></tr>
+          <tr><td>te-form</td><td class="jp"><span class="say" data-jp="たかくて">高くて</span></td></tr>
+        </table>
+      </div>
+      <div class="sheet" style="--accent:var(--murasaki)">
+        <h4>な-adjective — 静か (quiet)</h4>
+        <table class="ctable">
+          <tr><td>present</td><td class="jp"><span class="say" data-jp="しずかだ">静かだ</span></td></tr>
+          <tr><td>past</td><td class="jp"><span class="say" data-jp="しずかだった">静かだった</span></td></tr>
+          <tr><td>negative</td><td class="jp"><span class="say" data-jp="しずかじゃない">静かじゃない</span></td></tr>
+          <tr><td>past negative</td><td class="jp"><span class="say" data-jp="しずかじゃなかった">静かじゃなかった</span></td></tr>
+          <tr><td>adverb</td><td class="jp"><span class="say" data-jp="しずかに">静かに</span></td></tr>
+          <tr><td>+ noun</td><td class="jp"><span class="say" data-jp="しずかなへや">静かな部屋</span></td></tr>
+        </table>
+      </div>
+    </div>
+    <p class="note" style="--accent:var(--murasaki)">⚠ <b>いい (good)</b> is irregular — it conjugates from よい: <span class="say" data-jp="よくない">よくない</span> (not good), <span class="say" data-jp="よかった">よかった</span> (was good).</p>
+  </section>
+
+  <!-- COPULA -->
+  <section class="group reveal" id="copula" style="--accent:var(--aiiro);scroll-margin-top:96px">
+    <div class="ghead"><span class="tag" style="background:var(--aiiro)">だ</span><h2>です / だ (to be)</h2><span class="jp-sub">the copula</span></div>
+    <div class="sheet" style="--accent:var(--aiiro)">
+      <table class="ctable">
+        <tr><th></th><th>Polite (です)</th><th>Plain (だ)</th></tr>
+        <tr><td>is</td><td class="jp"><span class="say" data-jp="がくせいです">学生です</span></td><td class="jp"><span class="say" data-jp="がくせいだ">学生だ</span></td></tr>
+        <tr><td>was</td><td class="jp"><span class="say" data-jp="がくせいでした">学生でした</span></td><td class="jp"><span class="say" data-jp="がくせいだった">学生だった</span></td></tr>
+        <tr><td>is not</td><td class="jp"><span class="say" data-jp="がくせいじゃないです">学生じゃないです</span></td><td class="jp"><span class="say" data-jp="がくせいじゃない">学生じゃない</span></td></tr>
+        <tr><td>was not</td><td class="jp"><span class="say" data-jp="がくせいじゃなかったです">学生じゃなかったです</span></td><td class="jp"><span class="say" data-jp="がくせいじゃなかった">学生じゃなかった</span></td></tr>
+      </table>
+    </div>
+    <p class="csub" style="padding:0 4px">More formal "is not": ではありません. More formal "was not": ではありませんでした.</p>
+  </section>
+
+  <!-- PRONOUNS + FAMILY -->
+  <section class="group reveal" id="pronouns" style="--accent:var(--renga);scroll-margin-top:96px">
+    <div class="ghead"><span class="tag" style="background:var(--renga)">人</span><h2>Pronouns</h2><span class="jp-sub">use names where you can — pronouns are dropped a lot</span></div>
+    <div class="sheet" style="--accent:var(--renga)">
+      <table class="ctable">
+        <tr><td class="jp"><span class="say" data-jp="わたし">私 (わたし)</span></td><td class="rm">I — neutral/polite</td><td class="jp"><span class="say" data-jp="あなた">あなた</span></td><td class="rm">you (use sparingly)</td></tr>
+        <tr><td class="jp"><span class="say" data-jp="ぼく">僕 (ぼく)</span></td><td class="rm">I — male, casual</td><td class="jp"><span class="say" data-jp="きみ">君 (きみ)</span></td><td class="rm">you — familiar</td></tr>
+        <tr><td class="jp"><span class="say" data-jp="おれ">俺 (おれ)</span></td><td class="rm">I — male, rough</td><td class="jp"><span class="say" data-jp="かれ">彼 (かれ)</span></td><td class="rm">he / boyfriend</td></tr>
+        <tr><td class="jp"><span class="say" data-jp="わたしたち">私たち</span></td><td class="rm">we</td><td class="jp"><span class="say" data-jp="かのじょ">彼女 (かのじょ)</span></td><td class="rm">she / girlfriend</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <section class="group reveal" id="family" style="--accent:var(--asagi);scroll-margin-top:96px">
+    <div class="ghead"><span class="tag" style="background:var(--asagi)">家</span><h2>Family</h2><span class="jp-sub">your family (humble) vs someone else's (honorific)</span></div>
+    <div class="sheet" style="--accent:var(--asagi)">
+      <table class="ctable">
+        <tr><th>Member</th><th>Your own (humble)</th><th>Others' (honorific)</th></tr>
+        <tr><td>father</td><td class="jp"><span class="say" data-jp="ちち">父 (ちち)</span></td><td class="jp"><span class="say" data-jp="おとうさん">お父さん</span></td></tr>
+        <tr><td>mother</td><td class="jp"><span class="say" data-jp="はは">母 (はは)</span></td><td class="jp"><span class="say" data-jp="おかあさん">お母さん</span></td></tr>
+        <tr><td>older brother</td><td class="jp"><span class="say" data-jp="あに">兄 (あに)</span></td><td class="jp"><span class="say" data-jp="おにいさん">お兄さん</span></td></tr>
+        <tr><td>older sister</td><td class="jp"><span class="say" data-jp="あね">姉 (あね)</span></td><td class="jp"><span class="say" data-jp="おねえさん">お姉さん</span></td></tr>
+        <tr><td>younger brother</td><td class="jp"><span class="say" data-jp="おとうと">弟 (おとうと)</span></td><td class="jp"><span class="say" data-jp="おとうとさん">弟さん</span></td></tr>
+        <tr><td>younger sister</td><td class="jp"><span class="say" data-jp="いもうと">妹 (いもうと)</span></td><td class="jp"><span class="say" data-jp="いもうとさん">妹さん</span></td></tr>
+        <tr><td>grandfather</td><td class="jp"><span class="say" data-jp="そふ">祖父 (そふ)</span></td><td class="jp"><span class="say" data-jp="おじいさん">おじいさん</span></td></tr>
+        <tr><td>grandmother</td><td class="jp"><span class="say" data-jp="そぼ">祖母 (そぼ)</span></td><td class="jp"><span class="say" data-jp="おばあさん">おばあさん</span></td></tr>
+      </table>
+    </div>
+  </section>
+
+  <!-- COLORS -->
+  <section class="group reveal" id="colors" style="--accent:var(--shu);scroll-margin-top:96px">
+    <div class="ghead"><span class="tag" style="background:var(--shu)">色</span><h2>Colors</h2><span class="jp-sub">色 — iro</span></div>
+    <div class="sheet" style="--accent:var(--shu)">
+      <table class="ctable">
+        <tr><td class="jp"><span class="say" data-jp="あか">赤 (あか)</span></td><td class="rm">red</td><td class="jp"><span class="say" data-jp="あお">青 (あお)</span></td><td class="rm">blue</td></tr>
+        <tr><td class="jp"><span class="say" data-jp="きいろ">黄色 (きいろ)</span></td><td class="rm">yellow</td><td class="jp"><span class="say" data-jp="みどり">緑 (みどり)</span></td><td class="rm">green</td></tr>
+        <tr><td class="jp"><span class="say" data-jp="くろ">黒 (くろ)</span></td><td class="rm">black</td><td class="jp"><span class="say" data-jp="しろ">白 (しろ)</span></td><td class="rm">white</td></tr>
+        <tr><td class="jp"><span class="say" data-jp="ちゃいろ">茶色 (ちゃいろ)</span></td><td class="rm">brown</td><td class="jp"><span class="say" data-jp="むらさき">紫 (むらさき)</span></td><td class="rm">purple</td></tr>
+        <tr><td class="jp"><span class="say" data-jp="ピンク">ピンク</span></td><td class="rm">pink</td><td class="jp"><span class="say" data-jp="オレンジ">オレンジ</span></td><td class="rm">orange</td></tr>
+        <tr><td class="jp"><span class="say" data-jp="はいいろ">灰色 (はいいろ)</span></td><td class="rm">grey</td><td class="jp"><span class="say" data-jp="きんいろ">金色 (きんいろ)</span></td><td class="rm">gold</td></tr>
+      </table>
+    </div>
+    <p class="note" style="--accent:var(--shu)">⚡ Only <b>赤い・青い・黒い・白い・黄色い</b> work as い-adjectives. The rest attach with <b>の</b>: <span class="say" data-jp="みどりのくるま">緑の車</span> (a green car).</p>
+  </section>
+
+  <!-- ADVERBS -->
+  <section class="group reveal" id="adverbs" style="--accent:var(--take);scroll-margin-top:96px">
+    <div class="ghead"><span class="tag" style="background:var(--take)">副</span><h2>Common adverbs</h2><span class="jp-sub">degree &amp; frequency</span></div>
+    <div class="two">
+      <div class="sheet" style="--accent:var(--take)">
+        <h4>How much</h4>
+        <table class="ctable">
+          <tr><td class="jp"><span class="say" data-jp="とても">とても</span></td><td class="rm">very</td></tr>
+          <tr><td class="jp"><span class="say" data-jp="すごく">すごく</span></td><td class="rm">really</td></tr>
+          <tr><td class="jp"><span class="say" data-jp="ちょっと">ちょっと</span></td><td class="rm">a little</td></tr>
+          <tr><td class="jp"><span class="say" data-jp="あまり">あまり〜ない</span></td><td class="rm">not much</td></tr>
+          <tr><td class="jp"><span class="say" data-jp="ぜんぜん">全然〜ない</span></td><td class="rm">not at all</td></tr>
+        </table>
+      </div>
+      <div class="sheet" style="--accent:var(--take)">
+        <h4>How often</h4>
+        <table class="ctable">
+          <tr><td class="jp"><span class="say" data-jp="いつも">いつも</span></td><td class="rm">always</td></tr>
+          <tr><td class="jp"><span class="say" data-jp="たいてい">たいてい</span></td><td class="rm">usually</td></tr>
+          <tr><td class="jp"><span class="say" data-jp="よく">よく</span></td><td class="rm">often</td></tr>
+          <tr><td class="jp"><span class="say" data-jp="ときどき">時々</span></td><td class="rm">sometimes</td></tr>
+          <tr><td class="jp"><span class="say" data-jp="たまに">たまに</span></td><td class="rm">occasionally</td></tr>
+        </table>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="wrap">
+  <p><span class="jp">早見表、活用してね！</span> &nbsp;Bookmark this page — it's the one you'll keep coming back to. For particles see the <a href="particles.html">particle guide</a>, and for set phrases the <a href="speaking.html">speaking page</a>.</p>
+</footer>
+
+<script src="assets/audio.js"></script>
+<script src="assets/anki.js"></script>
+<script>
+  AnkiData.initPill(document.getElementById('migContainer'));
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.04});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+  JPAudio.wire();
+
+  /* highlight terms that exist in the connected Anki deck */
+  function markDeck(){
+    const note=document.getElementById('deckNote');
+    document.querySelectorAll('.say.ank-known,.say.ank-learning').forEach(el=>el.classList.remove('ank-known','ank-learning'));
+    const d=AnkiData.get();
+    if(!d){ note.style.display='none'; return; }
+    const status={};
+    d.words.forEach(w=>{ if(!(w.w in status)) status[w.w]=w.status; if(w.r && !(w.r in status)) status[w.r]=w.status; });
+    let n=0;
+    document.querySelectorAll('.say').forEach(el=>{
+      const st = status[el.textContent.trim()] || status[(el.dataset.jp||'').trim()];
+      if(st){ el.classList.add(st==='known'?'ank-known':'ank-learning'); n++; }
+    });
+    note.style.display = n ? '' : 'none';
+    note.innerHTML = '📗 <b>'+n+'</b> term'+(n===1?'':'s')+' on this page '+(n===1?'is':'are')+' in the connected Anki deck — <span class="ank-known" style="padding:0 5px">known</span> · <span class="ank-learning" style="padding:0 5px">learning</span>.';
+  }
+  AnkiData.onChange(markDeck); markDeck();
+</script>
+</body>
+</html>
