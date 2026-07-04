@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Cheat Sheets — 早見表 — ローリーの日本語ハブ</title>
 <link rel="stylesheet" href="assets/theme.css">
+<script src="assets/theme.js"></script>
 <style>
   .ctable{width:100%;border-collapse:collapse;font-size:.93rem;margin:2px 0;}
   .ctable th{text-align:left;font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);font-weight:700;padding:6px 10px;border-bottom:2px solid var(--line);}
@@ -17,7 +18,7 @@
   .sheet h4{font-family:"Newsreader",serif;font-weight:600;font-size:1.05rem;margin:12px 4px 2px;}
   .two{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
   @media(max-width:640px){.two{grid-template-columns:1fr;}}
-  .legend2{position:sticky;top:43px;z-index:40;background:rgba(244,241,234,.9);backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid var(--line);padding:9px 0;}
+  .legend2{position:sticky;top:43px;z-index:40;background:var(--nav-bg);backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid var(--line);padding:9px 0;}
   .legend2 .inner{display:flex;gap:7px;overflow-x:auto;scrollbar-width:none;max-width:920px;margin:0 auto;padding:0 20px;}
   .legend2 .inner::-webkit-scrollbar{display:none}
   .legend2 a{flex:0 0 auto;text-decoration:none;color:var(--ink);font-size:.8rem;font-weight:600;padding:5px 11px;border-radius:999px;border:1px solid var(--line);background:var(--paper-2);white-space:nowrap;}
@@ -32,7 +33,7 @@
     <a class="brand" href="index.html" style="gap:0"><span style="color:var(--shu)">ローリー</span><span style="color:var(--ink-soft)">の</span><span style="color:var(--aiiro)">日本語</span><span style="color:var(--take)">ハブ</span></a>
     <a class="tab" href="index.html">Home</a>
     <a class="tab" href="kana.html">Kana</a>    <a class="tab" href="kanji.html">Kanji</a>
-    <a class="tab" href="particles.html">Particles</a>
+    <a class="tab" href="grammar.html">Grammar</a>
     <a class="tab active" href="cheatsheets.html">Cheats</a>
     <a class="tab" href="speaking.html">Speaking</a>
     <a class="tab" href="quizzes.html">Quizzes</a>
@@ -48,7 +49,7 @@
     <p class="eyebrow">Reference tables</p>
     <h1>The closed systems of Japanese,<br>on <em>one</em> page.</h1>
     <p class="jp-title">早見表 ・ はやみひょう</p>
-    <p class="lede"><strong>Japanese grammar is built on a handful of fixed, memorisable systems — and these are their tables.</strong> Numbers and counters, time and dates, question words, the こそあど demonstratives, and the complete conjugation patterns for verbs, adjectives, and です. Tap any <span class="say" data-jp="日本語">Japanese</span> term to hear it.</p>
+    <p class="lede"><strong>The fixed, memorisable systems of Japanese — collected as tables.</strong> Numbers and counters, time and dates, question words, the こそあど demonstratives, pronouns, family terms, colors, and adverbs. Conjugation tables live on the <a href="grammar.html">Grammar page</a>. Tap any <span class="say" data-jp="日本語">Japanese</span> term to hear it.</p>
   </div>
 </header>
 
@@ -59,9 +60,6 @@
     <a href="#time">Time &amp; dates</a>
     <a href="#questions">Question words</a>
     <a href="#kosoado">こそあど</a>
-    <a href="#verbs">Verbs</a>
-    <a href="#adjectives">Adjectives</a>
-    <a href="#copula">です / だ</a>
     <a href="#pronouns">Pronouns</a>
     <a href="#family">Family</a>
     <a href="#colors">Colors</a>
@@ -222,76 +220,8 @@
     </div>
   </section>
 
-  <!-- VERBS -->
-  <section class="group reveal" id="verbs" style="--accent:var(--take);scroll-margin-top:96px">
-    <div class="ghead"><span class="tag" style="background:var(--take)">動</span><h2>Verb conjugation</h2><span class="jp-sub">動詞 — dōshi</span></div>
-    <p class="gintro">Three groups. <b>Group 2</b> (る-verbs): drop る, add ending. <b>Group 1</b> (う-verbs): change the final u-sound. Plus two irregulars, する and 来る.</p>
-    <div class="sheet" style="--accent:var(--take)">
-      <table class="ctable">
-        <tr><th>Form</th><th>Group 2 — 食べる</th><th>Group 1 — 飲む</th><th>する</th><th>来る</th></tr>
-        <tr><td>dictionary</td><td class="jp"><span class="say" data-jp="たべる">食べる</span></td><td class="jp"><span class="say" data-jp="のむ">飲む</span></td><td class="jp"><span class="say" data-jp="する">する</span></td><td class="jp"><span class="say" data-jp="くる">来る</span></td></tr>
-        <tr><td>polite (〜ます)</td><td class="jp"><span class="say" data-jp="たべます">食べます</span></td><td class="jp"><span class="say" data-jp="のみます">飲みます</span></td><td class="jp"><span class="say" data-jp="します">します</span></td><td class="jp"><span class="say" data-jp="きます">来ます</span></td></tr>
-        <tr><td>negative (〜ない)</td><td class="jp"><span class="say" data-jp="たべない">食べない</span></td><td class="jp"><span class="say" data-jp="のまない">飲まない</span></td><td class="jp"><span class="say" data-jp="しない">しない</span></td><td class="jp"><span class="say" data-jp="こない">来ない</span></td></tr>
-        <tr><td>te-form</td><td class="jp"><span class="say" data-jp="たべて">食べて</span></td><td class="jp"><span class="say" data-jp="のんで">飲んで</span></td><td class="jp"><span class="say" data-jp="して">して</span></td><td class="jp"><span class="say" data-jp="きて">来て</span></td></tr>
-        <tr><td>past (〜た)</td><td class="jp"><span class="say" data-jp="たべた">食べた</span></td><td class="jp"><span class="say" data-jp="のんだ">飲んだ</span></td><td class="jp"><span class="say" data-jp="した">した</span></td><td class="jp"><span class="say" data-jp="きた">来た</span></td></tr>
-        <tr><td>potential (can)</td><td class="jp"><span class="say" data-jp="たべられる">食べられる</span></td><td class="jp"><span class="say" data-jp="のめる">飲める</span></td><td class="jp"><span class="say" data-jp="できる">できる</span></td><td class="jp"><span class="say" data-jp="こられる">来られる</span></td></tr>
-        <tr><td>volitional (let's)</td><td class="jp"><span class="say" data-jp="たべよう">食べよう</span></td><td class="jp"><span class="say" data-jp="のもう">飲もう</span></td><td class="jp"><span class="say" data-jp="しよう">しよう</span></td><td class="jp"><span class="say" data-jp="こよう">来よう</span></td></tr>
-      </table>
-    </div>
-    <div class="sheet" style="--accent:var(--take)">
-      <h4>The te-form rule (Group 1 endings)</h4>
-      <table class="ctable">
-        <tr><td class="jp">う・つ・る</td><td class="rm">→ って (買う→買って)</td><td class="jp">ぬ・ぶ・む</td><td class="rm">→ んで (飲む→飲んで)</td></tr>
-        <tr><td class="jp">く</td><td class="rm">→ いて (書く→書いて)</td><td class="jp">ぐ</td><td class="rm">→ いで (泳ぐ→泳いで)</td></tr>
-        <tr><td class="jp">す</td><td class="rm">→ して (話す→話して)</td><td class="jp">行く</td><td class="rm">→ 行って (exception!)</td></tr>
-      </table>
-    </div>
-  </section>
-
-  <!-- ADJECTIVES -->
-  <section class="group reveal" id="adjectives" style="--accent:var(--murasaki);scroll-margin-top:96px">
-    <div class="ghead"><span class="tag" style="background:var(--murasaki)">形</span><h2>Adjectives</h2><span class="jp-sub">い-adjectives vs な-adjectives</span></div>
-    <div class="two">
-      <div class="sheet" style="--accent:var(--murasaki)">
-        <h4>い-adjective — 高い (expensive)</h4>
-        <table class="ctable">
-          <tr><td>present</td><td class="jp"><span class="say" data-jp="たかい">高い</span></td></tr>
-          <tr><td>past</td><td class="jp"><span class="say" data-jp="たかかった">高かった</span></td></tr>
-          <tr><td>negative</td><td class="jp"><span class="say" data-jp="たかくない">高くない</span></td></tr>
-          <tr><td>past negative</td><td class="jp"><span class="say" data-jp="たかくなかった">高くなかった</span></td></tr>
-          <tr><td>adverb</td><td class="jp"><span class="say" data-jp="たかく">高く</span></td></tr>
-          <tr><td>te-form</td><td class="jp"><span class="say" data-jp="たかくて">高くて</span></td></tr>
-        </table>
-      </div>
-      <div class="sheet" style="--accent:var(--murasaki)">
-        <h4>な-adjective — 静か (quiet)</h4>
-        <table class="ctable">
-          <tr><td>present</td><td class="jp"><span class="say" data-jp="しずかだ">静かだ</span></td></tr>
-          <tr><td>past</td><td class="jp"><span class="say" data-jp="しずかだった">静かだった</span></td></tr>
-          <tr><td>negative</td><td class="jp"><span class="say" data-jp="しずかじゃない">静かじゃない</span></td></tr>
-          <tr><td>past negative</td><td class="jp"><span class="say" data-jp="しずかじゃなかった">静かじゃなかった</span></td></tr>
-          <tr><td>adverb</td><td class="jp"><span class="say" data-jp="しずかに">静かに</span></td></tr>
-          <tr><td>+ noun</td><td class="jp"><span class="say" data-jp="しずかなへや">静かな部屋</span></td></tr>
-        </table>
-      </div>
-    </div>
-    <p class="note" style="--accent:var(--murasaki)">⚠ <b>いい (good)</b> is irregular — it conjugates from よい: <span class="say" data-jp="よくない">よくない</span> (not good), <span class="say" data-jp="よかった">よかった</span> (was good).</p>
-  </section>
-
-  <!-- COPULA -->
-  <section class="group reveal" id="copula" style="--accent:var(--aiiro);scroll-margin-top:96px">
-    <div class="ghead"><span class="tag" style="background:var(--aiiro)">だ</span><h2>です / だ (to be)</h2><span class="jp-sub">the copula</span></div>
-    <div class="sheet" style="--accent:var(--aiiro)">
-      <table class="ctable">
-        <tr><th></th><th>Polite (です)</th><th>Plain (だ)</th></tr>
-        <tr><td>is</td><td class="jp"><span class="say" data-jp="がくせいです">学生です</span></td><td class="jp"><span class="say" data-jp="がくせいだ">学生だ</span></td></tr>
-        <tr><td>was</td><td class="jp"><span class="say" data-jp="がくせいでした">学生でした</span></td><td class="jp"><span class="say" data-jp="がくせいだった">学生だった</span></td></tr>
-        <tr><td>is not</td><td class="jp"><span class="say" data-jp="がくせいじゃないです">学生じゃないです</span></td><td class="jp"><span class="say" data-jp="がくせいじゃない">学生じゃない</span></td></tr>
-        <tr><td>was not</td><td class="jp"><span class="say" data-jp="がくせいじゃなかったです">学生じゃなかったです</span></td><td class="jp"><span class="say" data-jp="がくせいじゃなかった">学生じゃなかった</span></td></tr>
-      </table>
-    </div>
-    <p class="csub" style="padding:0 4px">More formal "is not": ではありません. More formal "was not": ではありませんでした.</p>
-  </section>
+  <!-- CONJUGATION MOVED -->
+  <p class="note" id="verbs" style="--accent:var(--take);scroll-margin-top:96px">📐 Looking for <b>verb &amp; adjective conjugation</b> or <b>です／だ</b>? Those tables moved to the <a href="grammar.html">Grammar page</a>, together with sentence structure, the N5–N4 grammar patterns, and politeness/register.</p>
 
   <!-- PRONOUNS + FAMILY -->
   <section class="group reveal" id="pronouns" style="--accent:var(--renga);scroll-margin-top:96px">

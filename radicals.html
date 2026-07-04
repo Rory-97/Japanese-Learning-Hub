@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Radicals — 部首 — ローリーの日本語ハブ</title>
 <link rel="stylesheet" href="assets/theme.css">
+<script src="assets/theme.js"></script>
 <style>
   .rad-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;}
   .rad{background:var(--paper-2);border:1px solid var(--line);border-radius:12px;padding:11px 12px 10px;box-shadow:var(--shadow);border-left:4px solid var(--accent);cursor:pointer;transition:transform .1s ease,box-shadow .1s ease;position:relative;}
@@ -23,7 +24,7 @@
   .strokehead{font-family:"Zen Old Mincho",serif;font-weight:700;font-size:1.15rem;margin:26px 0 12px;display:flex;align-items:center;gap:10px;scroll-margin-top:150px;}
   .strokehead::after{content:"";flex:1;height:1px;background:var(--line);}
   .strokehead .cnt{font-family:"Hanken Grotesk",sans-serif;font-size:.78rem;font-weight:600;color:var(--ink-soft);}
-  .toolbar{position:sticky;top:43px;z-index:40;background:rgba(244,241,234,.92);backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid var(--line);padding:10px 0;}
+  .toolbar{position:sticky;top:43px;z-index:40;background:var(--nav-bg);backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid var(--line);padding:10px 0;}
   .toolbar .inner{max-width:920px;margin:0 auto;padding:0 20px;display:flex;gap:10px;align-items:center;flex-wrap:wrap;}
   #search{flex:1 1 200px;font-family:inherit;font-size:.92rem;padding:9px 14px;border-radius:999px;border:1px solid var(--line);background:var(--paper-2);color:var(--ink);}
   #search:focus{outline:2px solid var(--accent);border-color:transparent;}
@@ -41,7 +42,7 @@
     <a class="tab" href="index.html">Home</a>
     <a class="tab" href="kana.html">Kana</a>
     <a class="tab active" href="kanji.html">Kanji</a>
-    <a class="tab" href="particles.html">Particles</a>
+    <a class="tab" href="grammar.html">Grammar</a>
     <a class="tab" href="cheatsheets.html">Cheats</a>
     <a class="tab" href="speaking.html">Speaking</a>
     <a class="tab" href="quizzes.html">Quizzes</a>

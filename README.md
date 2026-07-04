@@ -14,10 +14,11 @@ A static, no-build Japanese learning hub that personalizes itself around an Anki
 | `kana.html` | Hiragana/katakana charts + drills |
 | `kanji.html` | Core N5 kanji browser + "Random 20 from Anki" + reading quiz (subtab pair with Radicals) |
 | `radicals.html` | All 214 Kangxi radicals, searchable, deck badges |
+| `grammar.html` | Sentence structure, conjugation tables, N5–N4 grammar patterns, politeness (subtab pair with Particles) |
 | `particles.html` | Particle guide |
-| `cheatsheets.html` | Numbers, counters, time, conjugation, and more — click-to-hear |
+| `cheatsheets.html` | Numbers, counters, time, question words, pronouns, and more — click-to-hear |
 | `speaking.html` | Pronunciation, pitch accent, phrases, deck shadowing |
-| `quizzes.html` | Dynamic kana/kanji/particle/mixed quizzes + adaptive "My vocab" mode |
+| `quizzes.html` | Dynamic kana/kanji/particle/grammar/mixed quizzes + adaptive "My vocab" mode |
 | `setup.html` | Anki setup, video mining, and manga mining guides (tabbed, per-platform) |
 
 ## How it works

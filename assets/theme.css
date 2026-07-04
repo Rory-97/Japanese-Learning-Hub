@@ -24,7 +24,45 @@
 
   --shadow:0 1px 0 rgba(33,28,21,.04), 0 12px 28px -16px rgba(33,28,21,.32);
   --shadow-lg:0 1px 0 rgba(33,28,21,.04),0 18px 34px -16px rgba(33,28,21,.4);
+
+  --nav-bg:rgba(244,241,234,.9);
 }
+
+html{color-scheme:light;}
+
+/* ---------- dark mode ("night washi") ---------- */
+html[data-theme="dark"]{color-scheme:dark;}
+html[data-theme="dark"]:root{
+  --paper:#1b1813;
+  --paper-2:#26221a;
+  --ink:#ece5d8;
+  --ink-soft:#b0a591;
+  --line:#3b3529;
+
+  --aiiro:#7ba7d4;     /* indigo, lightened for contrast */
+  --asagi:#54b0bd;
+  --yamabuki:#d9a53c;
+  --shu:#e0714f;
+  --take:#93b07f;
+  --murasaki:#b48ecb;
+  --renga:#c98a60;
+
+  --ok:#7cb98b;
+  --bad:#e0714f;
+
+  --shadow:0 1px 0 rgba(0,0,0,.2), 0 12px 28px -16px rgba(0,0,0,.7);
+  --shadow-lg:0 1px 0 rgba(0,0,0,.2),0 18px 34px -16px rgba(0,0,0,.8);
+
+  --nav-bg:rgba(27,24,19,.88);
+}
+/* rules that hardcode white text on --ink backgrounds need the paper color in dark */
+html[data-theme="dark"] .topnav a.tab.active,
+html[data-theme="dark"] .subtabs a.active,
+html[data-theme="dark"] .seg button.active,
+html[data-theme="dark"] .btn.primary{color:var(--paper);}
+/* .cheat panels keep their light-on-dark text; give them a dark surface instead of the (now light) ink color */
+html[data-theme="dark"] .cheat{background:var(--paper-2);border:1px solid var(--line);}
+html[data-theme="dark"] .jumps a:hover{color:var(--paper);}
 
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -49,10 +87,17 @@ a{color:var(--aiiro);}
 /* ---------- TOP NAV (cross-page) ---------- */
 nav.topnav{
   position:sticky;top:0;z-index:60;
-  background:rgba(244,241,234,.9);
+  background:var(--nav-bg);
   backdrop-filter:saturate(1.4) blur(10px);
   border-bottom:1px solid var(--line);
 }
+.theme-toggle{
+  flex:0 0 auto;width:30px;height:30px;border-radius:50%;
+  border:1px solid var(--line);background:var(--paper-2);
+  cursor:pointer;font-size:.85rem;line-height:1;padding:0;
+  display:grid;place-items:center;transition:transform .12s ease;
+}
+.theme-toggle:hover{transform:scale(1.1);}
 .topnav-inner{
   display:flex;align-items:center;gap:6px;
   max-width:1080px;margin:0 auto;padding:9px 18px;
